@@ -84,7 +84,62 @@
 
 - (IBAction)sendAdvise:(id)sender
 {
-    
+    NSString *urlStr = [XLTools getInterfaceByKey:@"advise"];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    req.delegate = self;
+    req.requestMethod = @"POST";
+    [req setPostValue:_contentView.text forKey:@"msg"];
+    [req startAsynchronous];
+}
+
+#pragma mark - ASIHTTPRequestDelegate
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    Debug(@"%@",request.responseString);
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (request.responseStatusCode == 200) {
+        NSDictionary *dic = [request.responseString JSONValue];
+        if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"您的建议我们已经收到，谢谢！" 
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }else {
+            Debug(@"%@",[dic objectForKey:@"resultInfo"]);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:[dic objectForKey:@"resultInfo"] 
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+    }else {
+        Debug(@"%@",request.responseStatusCode);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"服务器内部异常！" 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    Debug(@"网络链接或服务器问题！");
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请检查网络链接或联系管理员！" 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 @end
