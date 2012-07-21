@@ -10,4 +10,8 @@
 
 @interface XLAdviseController : UIViewController
 
+@property (nonatomic,retain) IBOutlet UITextView *contentView;
+
+- (IBAction)sendAdvise:(id)sender;
+
 @end

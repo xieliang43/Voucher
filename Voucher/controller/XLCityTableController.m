@@ -133,7 +133,7 @@
         }else {
             Debug(@"%@",[dic objectForKey:@"resultInfo"]);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:[dic objectForKey:@"resultInfo"]
+                                                            message:@"获取城市列表失败！"
                                                            delegate:nil
                                                   cancelButtonTitle:@"确定"
                                                   otherButtonTitles:nil];

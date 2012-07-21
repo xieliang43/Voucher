@@ -14,6 +14,14 @@
 
 @implementation XLAdviseController
 
+@synthesize contentView = _contentView;
+
+- (void)dealloc
+{
+    [_contentView release];
+    [super dealloc];
+}
+
 - (void)setNavigationBar
 {
     UIView *naviBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -72,6 +80,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)sendAdvise:(id)sender
+{
+    
 }
 
 @end
