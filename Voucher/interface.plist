@@ -14,5 +14,11 @@
 	<string>publishAction!sendPublish.action</string>
 	<key>advise</key>
 	<string>adviceAction!sendAdvice.action</string>
+	<key>merchant_type</key>
+	<string>shopAction!getShopTypes.action</string>
+	<key>distance_type</key>
+	<string>shopAction!getShopDistance.action</string>
+	<key>area_type</key>
+	<string>shopAction!getShopAreas.action</string>
 </dict>
 </plist>

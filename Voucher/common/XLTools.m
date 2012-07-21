@@ -17,6 +17,47 @@
     return [NSString stringWithFormat:@"%@/%@",baseUrl,[dic objectForKey:key]];
 }
 
++ (NSString *)getUserDocumentPath
+{
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+}
+
++ (void)writeMerchantTypeToFile:(NSArray *)arr
+{
+    NSString *merchantTypeFile = [NSString stringWithFormat:@"%@/merchantTypeArray.plist",[XLTools getUserDocumentPath]];
+    [arr writeToFile:merchantTypeFile atomically:YES];
+}
+
++ (NSArray *)readMerchantType
+{
+    NSString *merchantTypeFile = [NSString stringWithFormat:@"%@/merchantTypeArray.plist",[XLTools getUserDocumentPath]];
+    return [NSArray arrayWithContentsOfFile:merchantTypeFile];
+}
+
++ (void)writeDistanceTypeToFile:(NSArray *)arr
+{
+    NSString *distanceTypeFile = [NSString stringWithFormat:@"%@/distanceTypeArray.plist",[XLTools getUserDocumentPath]];
+    [arr writeToFile:distanceTypeFile atomically:YES];
+}
+
++ (NSArray *)readDistanceType
+{
+    NSString *distanceTypeFile = [NSString stringWithFormat:@"%@/distanceTypeArray.plist",[XLTools getUserDocumentPath]];
+    return [NSArray arrayWithContentsOfFile:distanceTypeFile];
+}
+
++ (void)writeAreaTypeToFile:(NSArray *)arr
+{
+    NSString *areaTypeFile = [NSString stringWithFormat:@"%@/areaTypeArray.plist",[XLTools getUserDocumentPath]];
+    [arr writeToFile:areaTypeFile atomically:YES];
+}
+
++ (NSArray *)readAreaType
+{
+    NSString *areaTypeFile = [NSString stringWithFormat:@"%@/areaTypeArray.plist",[XLTools getUserDocumentPath]];
+    return [NSArray arrayWithContentsOfFile:areaTypeFile];
+}
+
 + (void)saveUserInfo:(NSDictionary *)userInfo
 {
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];

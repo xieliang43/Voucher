@@ -12,6 +12,8 @@
 
 @synthesize titleLabel = _titleLabel;
 @synthesize optionArray = _optionArray;
+@synthesize optionType = _optionType;
+@synthesize delegate = _delegate;
 
 - (void)dealloc
 {
@@ -93,6 +95,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([_delegate respondsToSelector:@selector(didSelectIndex: type:)]) {
+        [_delegate didSelectIndex:indexPath.row type:_optionType];
+    }
+    [self closeOption:nil];
 }
 
 @end

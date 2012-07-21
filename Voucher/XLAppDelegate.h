@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XLUserLoginController.h"
+#import "ASIFormDataRequest.h"
+#import "NSObject+SBJSON.h"
 
 @interface XLAppDelegate : UIResponder <UIApplicationDelegate>
 

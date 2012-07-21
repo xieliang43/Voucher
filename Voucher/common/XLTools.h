@@ -12,6 +12,15 @@
 
 + (NSString *)getInterfaceByKey:(NSString *)key;
 
++ (NSString *)getUserDocumentPath;
+
++ (void)writeMerchantTypeToFile:(NSArray *)arr;
++ (NSArray *)readMerchantType;
++ (void)writeDistanceTypeToFile:(NSArray *)arr;
++ (NSArray *)readDistanceType;
++ (void)writeAreaTypeToFile:(NSArray *)arr;
++ (NSArray *)readAreaType;
+
 + (void)saveUserInfo:(NSDictionary *)userInfo;
 + (NSDictionary *)getUserInfo;
 + (void)deleteUserInfo;

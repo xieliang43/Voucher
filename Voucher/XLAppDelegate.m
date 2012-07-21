@@ -69,6 +69,30 @@
     }else {
         [self setLoginAsRoot];
     }
+    
+    //获取地域列表
+    NSString *urlStr = [XLTools getInterfaceByKey:@"merchant_type"];
+    ASIFormDataRequest *req1 = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    req1.requestMethod = @"POST";
+    req1.delegate = self;
+    req1.tag = 1000;
+    [req1 startAsynchronous];
+    
+    //获取距离列表
+    urlStr = [XLTools getInterfaceByKey:@"distance_type"];
+    ASIFormDataRequest *req2 = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    req2.requestMethod = @"POST";
+    req2.delegate = self;
+    req2.tag = 1001;
+    [req2 startAsynchronous];
+    
+    //获取区域列表
+    urlStr = [XLTools getInterfaceByKey:@"area_type"];
+    ASIFormDataRequest *req3 = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    req3.requestMethod = @"POST";
+    req3.delegate = self;
+    req3.tag = 1002;
+    [req3 startAsynchronous];
 
     [self.window makeKeyAndVisible];
     return YES;
@@ -100,6 +124,41 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - ASIHTTPRequestDelegate
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    Debug(@"%@",request.responseString);
+    if (request.responseStatusCode == 200) {
+        NSDictionary *dic = [request.responseString JSONValue];
+        if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
+            switch (request.tag) {
+                case 1000:
+                {
+                    [XLTools writeMerchantTypeToFile:[dic objectForKey:@"info"]];
+                    break;
+                }
+                case 1001:
+                {
+                    [XLTools writeDistanceTypeToFile:[dic objectForKey:@"info"]];
+                    break;
+                }
+                case 1002:
+                {
+                    [XLTools writeAreaTypeToFile:[dic objectForKey:@"info"]];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    
 }
 
 @end
