@@ -28,5 +28,6 @@
 
 + (void)saveCityInfo:(NSDictionary *)dic;
 + (NSDictionary *)getCityInfo;
++ (void)deleteCityInfo;
 
 @end

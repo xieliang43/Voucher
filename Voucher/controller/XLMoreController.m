@@ -166,7 +166,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         //city select
-        XLCityTableController *cityController = [[XLCityTableController alloc] initWithNibName:nil bundle:nil];
+        XLCityTableController *cityController = [[XLCityTableController alloc] initWithNibName:nil bundle:nil type:1];
         [self.navigationController pushViewController:cityController animated:YES];
         [cityController release];
     }else {
@@ -198,6 +198,7 @@
             case 4:
             {
                 [XLTools deleteUserInfo];
+                [XLTools deleteCityInfo];
                 [(XLAppDelegate *)[UIApplication sharedApplication].delegate setLoginAsRoot];
                 break;
             }

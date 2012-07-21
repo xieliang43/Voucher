@@ -53,9 +53,7 @@
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.font = [UIFont systemFontOfSize:16];
         _titleLabel.textAlignment = UITextAlignmentCenter;
-        _titleLabel.text = @"地域";
         [bgView addSubview:_titleLabel];
-        
         
         _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(6, 48, 250, 320-48)];
         _optionTable.backgroundColor = [UIColor clearColor];
@@ -72,11 +70,16 @@
     [self removeFromSuperview];
 }
 
+- (void)loadData
+{
+    [_optionTable reloadData];
+}
+
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 //datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return [_optionArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,6 +90,12 @@
     if (!cell) {
         cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellId] autorelease];
     }
+    cell.textLabel.textColor = [UIColor whiteColor];
+    if (_optionType == DISTANCE_TYPE) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@米",[[_optionArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
+    }else {
+        cell.textLabel.text = [[_optionArray objectAtIndex:indexPath.row] objectForKey:@"name"];
+    }
     
     return cell;
 }
@@ -95,8 +104,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([_delegate respondsToSelector:@selector(didSelectIndex: type:)]) {
-        [_delegate didSelectIndex:indexPath.row type:_optionType];
+    if ([_delegate respondsToSelector:@selector(didSelect: value: type:)]) {
+        [_delegate didSelect:[[[_optionArray objectAtIndex:indexPath.row] objectForKey:@"id"] intValue]
+                       value:[[_optionArray objectAtIndex:indexPath.row] objectForKey:@"name"]
+                        type:_optionType];
     }
     [self closeOption:nil];
 }

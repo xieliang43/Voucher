@@ -101,4 +101,11 @@
     return [def objectForKey:@"cityInfo"];
 }
 
++ (void)deleteCityInfo
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def removeObjectForKey:@"cityInfo"];
+    [def synchronize];
+}
+
 @end

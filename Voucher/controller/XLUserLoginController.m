@@ -82,6 +82,16 @@
     [self setNavigationBar];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (![XLTools getCityInfo]) {
+        XLCityTableController *cityController = [[XLCityTableController alloc] initWithNibName:nil bundle:nil type:0];
+        [self presentModalViewController:cityController animated:YES];
+        [cityController release];
+    }
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -98,7 +108,6 @@
 {
     [_passwordField resignFirstResponder];
 }
-
 
 #pragma mark - login and regist
 - (IBAction)doRegist:(id)sender

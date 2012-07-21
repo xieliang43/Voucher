@@ -16,6 +16,7 @@
 
 @synthesize tableView = _tableView;
 @synthesize currentCityLabel = _currentCityLabel;
+@synthesize type = _type;
 
 - (void)dealloc
 {
@@ -23,6 +24,7 @@
     [_indexArray release];
     [_tableView release];
     [_currentCityLabel release];
+    [areaInfo release];
     [super dealloc];
 }
 
@@ -42,14 +44,32 @@
     [naviBar addSubview:titleLabel];
     [titleLabel release];
     
-    UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftItem.frame = CGRectMake(10, 6, 51, 32);
-    [leftItem setBackgroundImage:[UIImage imageNamed:@"go_back.png"] forState:UIControlStateNormal];
-    [leftItem setTitle:@"返回" forState:UIControlStateNormal];
-    leftItem.titleEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0);
-    leftItem.titleLabel.font = [UIFont systemFontOfSize:16];
-    [leftItem addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
-    [naviBar addSubview:leftItem];
+    if (_type == 0) {
+        UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
+        leftItem.frame = CGRectMake(10, 6, 51, 32);
+        [leftItem setBackgroundImage:[UIImage imageNamed:@"red_btn.png"] forState:UIControlStateNormal];
+        [leftItem setTitle:@"取消" forState:UIControlStateNormal];
+        leftItem.titleLabel.font = [UIFont systemFontOfSize:16];
+        [leftItem addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+        [naviBar addSubview:leftItem];
+    }else {
+        UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
+        leftItem.frame = CGRectMake(10, 6, 51, 32);
+        [leftItem setBackgroundImage:[UIImage imageNamed:@"go_back.png"] forState:UIControlStateNormal];
+        [leftItem setTitle:@"返回" forState:UIControlStateNormal];
+        leftItem.titleEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0);
+        leftItem.titleLabel.font = [UIFont systemFontOfSize:16];
+        [leftItem addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+        [naviBar addSubview:leftItem];
+    }
+    
+    UIButton *rightItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightItem.frame = CGRectMake(320-10-51, 6, 51, 32);
+    [rightItem setBackgroundImage:[UIImage imageNamed:@"red_btn.png"] forState:UIControlStateNormal];
+    [rightItem setTitle:@"确定" forState:UIControlStateNormal];
+    rightItem.titleLabel.font = [UIFont systemFontOfSize:16];
+    [rightItem addTarget:self action:@selector(saveCity:) forControlEvents:UIControlEventTouchUpInside];
+    [naviBar addSubview:rightItem];
 }
 
 - (void)goBack:(id)sender
@@ -57,12 +77,27 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)cancel:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)saveCity:(id)sender
+{
+    [XLTools saveCityInfo:areaInfo];
+    if (_type == 0) {
+        [self cancel:nil];
+    }else {
+        [self goBack:nil];
+    }
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(NSInteger)type
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        self.type = type;
     }
     return self;
 }
@@ -74,12 +109,12 @@
     
     [self setNavigationBar];
     
-    if (areaCode) {
-        [areaCode release];
-        areaCode = nil;
+    if (areaInfo) {
+        [areaInfo release];
+        areaInfo = nil;
     }
-    areaCode = [[[[XLTools getCityInfo] objectForKey:@"id"] stringValue] retain];
-    _currentCityLabel.text = [[XLTools getCityInfo] objectForKey:@"name"];
+    areaInfo = [[XLTools getCityInfo] retain];
+    _currentCityLabel.text = [areaInfo objectForKey:@"name"];
     
     _dataDic = [[NSMutableDictionary dictionary] retain];
     
@@ -201,7 +236,7 @@
         cell = (XLCityCell *)[[[NSBundle mainBundle] loadNibNamed:@"XLCityCell" owner:self options:nil] lastObject];
     }
     NSDictionary *dic = [[_dataDic objectForKey:[_indexArray objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-    if ([[[dic objectForKey:@"id"] stringValue] isEqualToString:areaCode]) {
+    if ([[[dic objectForKey:@"id"] stringValue] isEqualToString:[areaInfo objectForKey:@"id"]]) {
         cell.selectedView.hidden = NO;
         [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     }
@@ -231,13 +266,11 @@
     cell.selectedView.hidden = NO;
     
     NSDictionary *dic = [[_dataDic objectForKey:[_indexArray objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-    if (areaCode) {
-        [areaCode release];
-        areaCode = nil;
+    if (areaInfo) {
+        [areaInfo release];
+        areaInfo = nil;
     }
-    areaCode = [[[dic objectForKey:@"id"] stringValue] retain];
-    _currentCityLabel.text = [dic objectForKey:@"name"];
-    [XLTools saveCityInfo:dic];
+    areaInfo = [dic retain];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

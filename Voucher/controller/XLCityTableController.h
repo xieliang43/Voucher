@@ -14,10 +14,14 @@
 {
     NSMutableDictionary *_dataDic;
     NSArray *_indexArray;
-    NSString *areaCode;
+    NSDictionary *areaInfo;
+    NSInteger _type;
 }
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;
 @property (nonatomic,retain) IBOutlet UILabel *currentCityLabel;
+@property (nonatomic,assign) NSInteger type;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(NSInteger)type;
 
 @end

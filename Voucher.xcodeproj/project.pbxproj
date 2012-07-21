@@ -32,6 +32,7 @@
 		CD3E4D6115ADD6E50059E392 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3E4D5C15ADD6E50059E392 /* SBJsonWriter.m */; };
 		CD3E4D6615ADDEAE0059E392 /* XLMerchantListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3E4D6415ADDEAE0059E392 /* XLMerchantListController.m */; };
 		CD3E4D6715ADDEAE0059E392 /* XLMerchantListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3E4D6515ADDEAE0059E392 /* XLMerchantListController.xib */; };
+		CD6EE79015BAE49D003561E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */; };
 		CD83789B15B2D86B0072A0FE /* XLMerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD83789A15B2D86B0072A0FE /* XLMerchantCell.xib */; };
 		CD83789E15B2D9450072A0FE /* test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD83789D15B2D9450072A0FE /* test@2x.png */; };
 		CD8378A015B2D9B10072A0FE /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD83789F15B2D9B10072A0FE /* location@2x.png */; };
@@ -132,6 +133,7 @@
 		CD3E4D6315ADDEAE0059E392 /* XLMerchantListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLMerchantListController.h; sourceTree = "<group>"; };
 		CD3E4D6415ADDEAE0059E392 /* XLMerchantListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMerchantListController.m; sourceTree = "<group>"; };
 		CD3E4D6515ADDEAE0059E392 /* XLMerchantListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantListController.xib; sourceTree = "<group>"; };
+		CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CD83789A15B2D86B0072A0FE /* XLMerchantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantCell.xib; sourceTree = "<group>"; };
 		CD83789D15B2D9450072A0FE /* test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test@2x.png"; sourceTree = "<group>"; };
 		CD83789F15B2D9B10072A0FE /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6EE79015BAE49D003561E4 /* CoreLocation.framework in Frameworks */,
 				CDD19DB715989DDB006D63D0 /* libz.dylib in Frameworks */,
 				CDD19DB515989DD3006D63D0 /* MobileCoreServices.framework in Frameworks */,
 				CDD19DB315989DBE006D63D0 /* SystemConfiguration.framework in Frameworks */,
@@ -377,6 +380,7 @@
 		CDD19D7315989C7F006D63D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */,
 				CDD19DB615989DDB006D63D0 /* libz.dylib */,
 				CDD19DB415989DD3006D63D0 /* MobileCoreServices.framework */,
 				CDD19DB215989DBE006D63D0 /* SystemConfiguration.framework */,

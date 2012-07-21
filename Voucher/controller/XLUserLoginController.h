@@ -15,6 +15,7 @@
 #import "XLMerchantListController.h"
 #import "XLPocketController.h"
 #import "XLMoreController.h"
+#import "XLCityTableController.h"
 
 @interface XLUserLoginController : UIViewController
 

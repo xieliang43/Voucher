@@ -17,8 +17,10 @@
 	<key>merchant_type</key>
 	<string>shopAction!getShopTypes.action</string>
 	<key>distance_type</key>
-	<string>shopAction!getShopDistance.action</string>
+	<string>shopAction!getShopDistances.action</string>
 	<key>area_type</key>
 	<string>shopAction!getShopAreas.action</string>
+	<key>get_shops</key>
+	<string>shopAction!getShops.action</string>
 </dict>
 </plist>

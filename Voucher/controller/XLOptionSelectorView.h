@@ -11,12 +11,12 @@
 typedef enum{
     AREA_TYPE = 1,
     DISTANCE_TYPE = 2,
-    CLASS_TYPE = 3
+    MERCHANT_TYPE = 3
 }OptionType;
 
 @protocol XLOptionSelectorDelegate <NSObject>
 
-- (void)didSelectIndex:(NSInteger)index type:(OptionType)oType;
+- (void)didSelect:(NSInteger)oid value:(NSString *)obj type:(OptionType)oType;
 
 @end
 
@@ -34,5 +34,7 @@ typedef enum{
 @property (nonatomic,retain) NSArray *optionArray;
 @property (nonatomic,assign) OptionType optionType;
 @property (nonatomic,assign) id<XLOptionSelectorDelegate> delegate;
+
+- (void)loadData;
 
 @end
