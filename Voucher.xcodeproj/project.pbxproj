@@ -50,6 +50,8 @@
 		CDA85A8715BC396100A8FEA7 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA85A8615BC396100A8FEA7 /* EGORefreshTableHeaderView.m */; };
 		CDA85A8B15BC397600A8FEA7 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA85A8915BC397600A8FEA7 /* blueArrow.png */; };
 		CDA85A8C15BC397600A8FEA7 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA85A8A15BC397600A8FEA7 /* blueArrow@2x.png */; };
+		CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */; };
+		CDA85A9515BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA85A9415BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.m */; };
 		CDB63BD015B445D10009C410 /* selected_gou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BCF15B445D10009C410 /* selected_gou@2x.png */; };
 		CDB63BD315B447100009C410 /* XLCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BD215B447100009C410 /* XLCityCell.xib */; };
 		CDB63BD615B4472C0009C410 /* XLCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB63BD515B4472C0009C410 /* XLCityCell.m */; };
@@ -156,6 +158,9 @@
 		CDA85A8615BC396100A8FEA7 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		CDA85A8915BC397600A8FEA7 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
 		CDA85A8A15BC397600A8FEA7 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CDA85A9315BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderViewEX.h; sourceTree = "<group>"; };
+		CDA85A9415BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderViewEX.m; sourceTree = "<group>"; };
 		CDB63BCF15B445D10009C410 /* selected_gou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_gou@2x.png"; sourceTree = "<group>"; };
 		CDB63BD215B447100009C410 /* XLCityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCityCell.xib; sourceTree = "<group>"; };
 		CDB63BD415B4472B0009C410 /* XLCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCityCell.h; sourceTree = "<group>"; };
@@ -237,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */,
 				CD6EE79015BAE49D003561E4 /* CoreLocation.framework in Frameworks */,
 				CDD19DB715989DDB006D63D0 /* libz.dylib in Frameworks */,
 				CDD19DB515989DD3006D63D0 /* MobileCoreServices.framework in Frameworks */,
@@ -375,6 +381,8 @@
 			children = (
 				CDA85A8515BC396100A8FEA7 /* EGORefreshTableHeaderView.h */,
 				CDA85A8615BC396100A8FEA7 /* EGORefreshTableHeaderView.m */,
+				CDA85A9315BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.h */,
+				CDA85A9415BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.m */,
 			);
 			path = RefreshTableHeaderView;
 			sourceTree = "<group>";
@@ -399,6 +407,7 @@
 		CDD19D7315989C7F006D63D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */,
 				CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */,
 				CDD19DB615989DDB006D63D0 /* libz.dylib */,
 				CDD19DB415989DD3006D63D0 /* MobileCoreServices.framework */,
@@ -674,6 +683,7 @@
 				CDB63BDE15B457D20009C410 /* XLPublishController.m in Sources */,
 				CDB63BE315B45B820009C410 /* XLAdviseController.m in Sources */,
 				CDA85A8715BC396100A8FEA7 /* EGORefreshTableHeaderView.m in Sources */,
+				CDA85A9515BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

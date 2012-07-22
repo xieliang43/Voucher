@@ -10,9 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import "XLMerchantCell.h"
 #import "XLOptionSelectorView.h"
+#import "EGORefreshTableHeaderView.h"
+#import "EGORefreshTableHeaderViewEX.h"
 
 @interface XLMerchantListController : UIViewController
-<UITableViewDataSource,UITableViewDelegate,XLOptionSelectorDelegate,CLLocationManagerDelegate>
+<UITableViewDataSource,UITableViewDelegate,
+XLOptionSelectorDelegate,CLLocationManagerDelegate,
+EGORefreshTableHeaderDelegate>
 {
     NSString *_merchantType;
     NSString *_distance;
@@ -27,8 +31,12 @@
     NSInteger start;
     NSInteger limit;
     
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    
+    BOOL _reloading;
 }
 
+@property (nonatomic,retain) IBOutlet UITableView *tableView;
 @property (nonatomic,retain) IBOutlet UIButton *merchantTypeBtn;
 @property (nonatomic,retain) IBOutlet UIButton *distanceBtn;
 @property (nonatomic,retain) IBOutlet UIButton *areaBtn;

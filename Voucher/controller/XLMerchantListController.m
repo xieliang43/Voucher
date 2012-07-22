@@ -17,6 +17,7 @@
 @synthesize merchantTypeBtn = _merchantTypeBtn;
 @synthesize areaBtn = _areaBtn;
 @synthesize distanceBtn = _distanceBtn;
+@synthesize tableView = _tableView;
 
 - (void)dealloc
 {
@@ -29,6 +30,7 @@
     [_areaBtn release];
     [_distanceBtn release];
     [locationManager release];
+    [_tableView release];
     
     [super dealloc];
 }
@@ -114,6 +116,16 @@
     }else {
         [self doSearch:nil];
     }
+    
+    if (_refreshHeaderView == nil) {
+		_refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		_refreshHeaderView.delegate = self;
+		[self.tableView addSubview:_refreshHeaderView];
+		_refreshHeaderView = _refreshHeaderView;
+		[_refreshHeaderView release];
+	}
+	
+	[_refreshHeaderView refreshLastUpdatedDate];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -267,6 +279,7 @@
 {
     Debug(@"%@",request.responseString);
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self doneLoadingTableViewData];
     if (request.responseStatusCode == 200) {
         NSDictionary *dic = [request.responseString JSONValue];
         if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
@@ -300,6 +313,7 @@
 - (void)didFailGetShops:(ASIFormDataRequest *)request
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self doneLoadingTableViewData];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                     message:@"请检查网络链接或联系管理员！" 
                                                    delegate:nil
@@ -323,6 +337,63 @@
         _merchantType = [[NSString stringWithFormat:@"%d,oid"] retain];
         [_merchantTypeBtn setTitle:obj forState:UIControlStateNormal];
     }
+}
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;
+	
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+	
+}
+
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self reloadTableViewDataSource];
+    start = 0;
+	[self performSelector:@selector(doSearch:) withObject:nil];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	return _reloading; // should return if data source model is reloading
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
 }
 
 @end

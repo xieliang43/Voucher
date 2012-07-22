@@ -64,6 +64,8 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
+    [XLTools createCacheDir];
+    
     if ([XLTools isLogin]) {
         [self setTabBarAsRoot];
     }else {

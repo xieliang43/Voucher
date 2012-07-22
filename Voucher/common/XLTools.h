@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CommonCrypto/CommonHMAC.h>
 
 @interface XLTools : NSObject
 
@@ -30,4 +31,10 @@
 + (NSDictionary *)getCityInfo;
 + (void)deleteCityInfo;
 
++ (NSString *)md5:(NSString *)str;
++ (NSString *)cachePath;
++ (void)createCacheDir;
++ (void)deleteCacheDir;
++ (void)saveFileToCache:(NSData *)data withName:(NSString *)name;
++ (NSData *)readFileToCache:(NSString *)name;
 @end

@@ -108,4 +108,63 @@
     [def synchronize];
 }
 
+
++ (NSString *)md5:(NSString *)str
+{
+    const char *cStr = [str UTF8String]; 
+    unsigned char result[32]; 
+    
+    CC_MD5( cStr, (CC_LONG)strlen(cStr), result ); 
+    
+    return [NSString stringWithFormat: 
+            
+            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+            
+            result[0], result[1], result[2], result[3], 
+            
+            result[4], result[5], result[6], result[7], 
+            
+            result[8], result[9], result[10], result[11], 
+            
+            result[12], result[13], result[14], result[15] 
+            
+            ];
+}
+
++ (NSString *)cachePath
+{
+    return [NSString stringWithFormat:@"%@/cacheDir",[XLTools getUserDocumentPath]];
+}
+
++ (void)createCacheDir
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:[XLTools cachePath]]) {
+        [manager createDirectoryAtPath:[XLTools cachePath] 
+           withIntermediateDirectories:YES
+                            attributes:nil
+                                 error:nil];
+    }
+}
+
++ (void)deleteCacheDir
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:[XLTools cachePath]]) {
+        [manager removeItemAtPath:[XLTools cachePath] error:nil];
+    }
+}
+
++ (void)saveFileToCache:(NSData *)data withName:(NSString *)name
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@",[XLTools cachePath],name];
+    [data writeToFile:path atomically:YES];
+}
+
++ (NSData *)readFileToCache:(NSString *)name
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@",[XLTools cachePath],name];
+    return [NSData dataWithContentsOfFile:path];
+}
+
 @end
