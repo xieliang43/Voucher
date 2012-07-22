@@ -24,6 +24,8 @@
     
     double latitude;
     double longitude;
+    NSInteger start;
+    NSInteger limit;
     
 }
 

@@ -47,6 +47,9 @@
 		CD8378B215B2E5D40072A0FE /* optionClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8378B115B2E5D40072A0FE /* optionClose@2x.png */; };
 		CDA2B7A315AC732C00CC1815 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */; };
 		CDA2B7A615AC75E800CC1815 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */; };
+		CDA85A8715BC396100A8FEA7 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA85A8615BC396100A8FEA7 /* EGORefreshTableHeaderView.m */; };
+		CDA85A8B15BC397600A8FEA7 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA85A8915BC397600A8FEA7 /* blueArrow.png */; };
+		CDA85A8C15BC397600A8FEA7 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA85A8A15BC397600A8FEA7 /* blueArrow@2x.png */; };
 		CDB63BD015B445D10009C410 /* selected_gou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BCF15B445D10009C410 /* selected_gou@2x.png */; };
 		CDB63BD315B447100009C410 /* XLCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BD215B447100009C410 /* XLCityCell.xib */; };
 		CDB63BD615B4472C0009C410 /* XLCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB63BD515B4472C0009C410 /* XLCityCell.m */; };
@@ -149,6 +152,10 @@
 		CDA2B7A115AC732B00CC1815 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
+		CDA85A8515BC396100A8FEA7 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		CDA85A8615BC396100A8FEA7 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		CDA85A8915BC397600A8FEA7 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		CDA85A8A15BC397600A8FEA7 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
 		CDB63BCF15B445D10009C410 /* selected_gou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_gou@2x.png"; sourceTree = "<group>"; };
 		CDB63BD215B447100009C410 /* XLCityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCityCell.xib; sourceTree = "<group>"; };
 		CDB63BD415B4472B0009C410 /* XLCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCityCell.h; sourceTree = "<group>"; };
@@ -260,6 +267,7 @@
 		CD0A8EAC15A4717D001B4DD5 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				CDA85A8415BC396100A8FEA7 /* RefreshTableHeaderView */,
 				E03AD9E015AFB35400B70C12 /* XLTabBarController.h */,
 				E03AD9E115AFB35400B70C12 /* XLTabBarController.m */,
 				E03AD9DC15AFB23C00B70C12 /* XLTabBarItem.h */,
@@ -314,6 +322,8 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				CDA85A8915BC397600A8FEA7 /* blueArrow.png */,
+				CDA85A8A15BC397600A8FEA7 /* blueArrow@2x.png */,
 				CDB63BD915B4536D0009C410 /* city_xuanze@2x.png */,
 				CDB63BD715B4514C0009C410 /* seperate_line@2x.png */,
 				CDB63BCF15B445D10009C410 /* selected_gou@2x.png */,
@@ -358,6 +368,15 @@
 				CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		CDA85A8415BC396100A8FEA7 /* RefreshTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA85A8515BC396100A8FEA7 /* EGORefreshTableHeaderView.h */,
+				CDA85A8615BC396100A8FEA7 /* EGORefreshTableHeaderView.m */,
+			);
+			path = RefreshTableHeaderView;
 			sourceTree = "<group>";
 		};
 		CDD19D6515989C7F006D63D0 = {
@@ -609,6 +628,8 @@
 				CDB63BDA15B4536D0009C410 /* city_xuanze@2x.png in Resources */,
 				CDB63BDF15B457D20009C410 /* XLPublishController.xib in Resources */,
 				CDB63BE415B45B820009C410 /* XLAdviseController.xib in Resources */,
+				CDA85A8B15BC397600A8FEA7 /* blueArrow.png in Resources */,
+				CDA85A8C15BC397600A8FEA7 /* blueArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +673,7 @@
 				CDB63BD615B4472C0009C410 /* XLCityCell.m in Sources */,
 				CDB63BDE15B457D20009C410 /* XLPublishController.m in Sources */,
 				CDB63BE315B45B820009C410 /* XLAdviseController.m in Sources */,
+				CDA85A8715BC396100A8FEA7 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

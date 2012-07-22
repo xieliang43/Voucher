@@ -65,6 +65,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        start = 0;
+        limit = 15;
     }
     return self;
 }
@@ -74,21 +76,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBar];
-    
-    if ([CLLocationManager locationServicesEnabled]) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;//设定为最佳精度  
-        locationManager.distanceFilter = 100.0f;//响应位置变化的最小距离(m)  
-        [locationManager startUpdatingLocation];  
-    }else {
-        [self doSearch:nil];
-    }
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
     //获取地域列表
     NSString *urlStr = [XLTools getInterfaceByKey:@"merchant_type"];
@@ -117,6 +104,21 @@
     req3.tag = 1002;
     [req3 setPostValue:[[XLTools getCityInfo] objectForKey:@"id"] forKey:@"cityId"];
     [req3 startAsynchronous];
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;//设定为最佳精度  
+        locationManager.distanceFilter = 100.0f;//响应位置变化的最小距离(m)  
+        [locationManager startUpdatingLocation];  
+    }else {
+        [self doSearch:nil];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidUnload
@@ -171,6 +173,10 @@
     [req setPostValue:_area forKey:@"area"];
     [req setPostValue:_distance forKey:@"distance"];
     [req setPostValue:_merchantType forKey:@"shopType"];
+    [req setPostValue:[NSNumber numberWithInt:start] forKey:@"start"];
+    [req setPostValue:[NSNumber numberWithInt:limit] forKey:@"limit"];
+    [req setPostValue:[NSNumber numberWithDouble:longitude] forKey:@"longitude"];
+    [req setPostValue:[NSNumber numberWithDouble:latitude] forKey:@"latitude"];
     [req setPostValue:feild.text forKey:@"keyword"];
     [req setPostValue:[[XLTools getCityInfo] objectForKey:@"id"] forKey:@"cityId"];
     [req startAsynchronous];
