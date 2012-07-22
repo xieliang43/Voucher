@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "XLUserLoginController.h"
 #import "ASIFormDataRequest.h"
 #import "NSObject+SBJSON.h"
 
-@interface XLAppDelegate : UIResponder <UIApplicationDelegate>
+@interface XLAppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

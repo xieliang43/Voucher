@@ -29,7 +29,6 @@
     [_merchantTypeBtn release];
     [_areaBtn release];
     [_distanceBtn release];
-    [locationManager release];
     [_tableView release];
     
     [super dealloc];
@@ -107,15 +106,7 @@
     [req3 setPostValue:[[XLTools getCityInfo] objectForKey:@"id"] forKey:@"cityId"];
     [req3 startAsynchronous];
     
-    if ([CLLocationManager locationServicesEnabled]) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;//设定为最佳精度  
-        locationManager.distanceFilter = 100.0f;//响应位置变化的最小距离(m)  
-        [locationManager startUpdatingLocation];  
-    }else {
-        [self doSearch:nil];
-    }
+    [self doSearch:nil]; 
     
     if (_refreshHeaderView == nil) {
 		_refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
@@ -185,24 +176,16 @@
     [req setPostValue:_area forKey:@"area"];
     [req setPostValue:_distance forKey:@"distance"];
     [req setPostValue:_merchantType forKey:@"shopType"];
-    [req setPostValue:[NSNumber numberWithInt:start] forKey:@"start"];
-    [req setPostValue:[NSNumber numberWithInt:limit] forKey:@"limit"];
-    [req setPostValue:[NSNumber numberWithDouble:longitude] forKey:@"longitude"];
-    [req setPostValue:[NSNumber numberWithDouble:latitude] forKey:@"latitude"];
+    [req setPostValue:[NSString stringWithFormat:@"%d",start] forKey:@"start"];
+    [req setPostValue:[NSString stringWithFormat:@"%d",limit] forKey:@"limit"];
+    [req setPostValue:[[XLTools userLocation] objectForKey:@"longitude"] forKey:@"longitude"];
+    Debug(@"%@",[[XLTools userLocation] objectForKey:@"longitude"]);
+    [req setPostValue:[[XLTools userLocation] objectForKey:@"latitude"] forKey:@"latitude"];
+    Debug(@"%@",[[XLTools userLocation] objectForKey:@"latitude"]);
     [req setPostValue:feild.text forKey:@"keyword"];
     [req setPostValue:[[XLTools getCityInfo] objectForKey:@"id"] forKey:@"cityId"];
     [req startAsynchronous];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-}
-
-#pragma mark - CLLocationManagerDelegate
-- (void)locationManager:(CLLocationManager *)manager
-	didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
-    latitude = newLocation.coordinate.latitude;
-    longitude = newLocation.coordinate.longitude;
-    [self doSearch:nil];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -337,6 +320,7 @@
         _merchantType = [[NSString stringWithFormat:@"%d,oid"] retain];
         [_merchantTypeBtn setTitle:obj forState:UIControlStateNormal];
     }
+    [self doSearch:nil];
 }
 
 #pragma mark -

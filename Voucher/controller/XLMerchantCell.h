@@ -10,4 +10,9 @@
 
 @interface XLMerchantCell : UITableViewCell
 
+@property (nonatomic,retain) IBOutlet UIImageView *logoView;
+@property (nonatomic,retain) IBOutlet UILabel *nameLabel;
+@property (nonatomic,retain) IBOutlet UILabel *distanceLabel;
+@property (nonatomic,retain) IBOutlet UILabel *descLabel;
+
 @end

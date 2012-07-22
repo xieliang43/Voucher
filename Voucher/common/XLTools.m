@@ -167,4 +167,18 @@
     return [NSData dataWithContentsOfFile:path];
 }
 
++ (void)saveUserLocation:(NSDictionary *)location
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setValue:location forKey:@"location"];
+    [def synchronize];
+}
+
++ (NSDictionary *)userLocation
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    NSDictionary *loc = [def objectForKey:@"location"];
+    return loc;
+}
+
 @end

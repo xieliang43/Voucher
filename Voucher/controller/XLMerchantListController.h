@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import "XLMerchantCell.h"
 #import "XLOptionSelectorView.h"
 #import "EGORefreshTableHeaderView.h"
@@ -15,8 +14,7 @@
 
 @interface XLMerchantListController : UIViewController
 <UITableViewDataSource,UITableViewDelegate,
-XLOptionSelectorDelegate,CLLocationManagerDelegate,
-EGORefreshTableHeaderDelegate>
+XLOptionSelectorDelegate,EGORefreshTableHeaderDelegate>
 {
     NSString *_merchantType;
     NSString *_distance;
@@ -24,10 +22,6 @@ EGORefreshTableHeaderDelegate>
     
     NSArray *_dataArray;
     
-    CLLocationManager *locationManager;
-    
-    double latitude;
-    double longitude;
     NSInteger start;
     NSInteger limit;
     

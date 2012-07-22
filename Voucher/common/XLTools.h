@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 #import <CommonCrypto/CommonHMAC.h>
 
 @interface XLTools : NSObject
@@ -37,4 +38,7 @@
 + (void)deleteCacheDir;
 + (void)saveFileToCache:(NSData *)data withName:(NSString *)name;
 + (NSData *)readFileToCache:(NSString *)name;
+
++ (void)saveUserLocation:(NSDictionary *)location;
++ (NSDictionary *)userLocation;
 @end

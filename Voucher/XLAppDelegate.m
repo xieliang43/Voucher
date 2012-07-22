@@ -15,6 +15,7 @@
 - (void)dealloc
 {
     [_window release];
+    [locationManager release];
     [super dealloc];
 }
 
@@ -96,12 +97,35 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
+    if ([CLLocationManager locationServicesEnabled]) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;//设定为最佳精度  
+        locationManager.distanceFilter = 100.0f;//响应位置变化的最小距离(m)  
+        [locationManager startUpdatingLocation];  
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    double longt = newLocation.coordinate.longitude;
+    double lati = newLocation.coordinate.latitude;
+    if (abs(longt) < 0.00000001 && abs(lati) < 0.00000001) {
+        return;
+    }
+    
+    NSString *longitude = [NSString stringWithFormat:@"%.7f",oldLocation.coordinate.longitude];
+    NSString *latitude = [NSString stringWithFormat:@"%.7f",oldLocation.coordinate.latitude];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:longitude,@"longitude",latitude,@"latitude",nil];
+    [XLTools saveUserLocation:dic];
 }
 
 @end
