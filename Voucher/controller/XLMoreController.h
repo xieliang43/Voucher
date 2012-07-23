@@ -12,6 +12,7 @@
 #import "XLCityTableController.h"
 #import "XLPublishController.h"
 #import "XLAdviseController.h"
+#import "XLAboutMeController.h"
 
 @class XLTabBarController;
 

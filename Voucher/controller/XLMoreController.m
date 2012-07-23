@@ -187,12 +187,15 @@
             }
             case 2:
             {
-                
+                [XLTools deleteCacheDir];
+                [XLTools createCacheDir];
                 break;
             }
             case 3:
             {
-                
+                XLAboutMeController *aboutController = [[XLAboutMeController alloc] initWithNibName:nil bundle:nil];
+                [self.navigationController pushViewController:aboutController animated:YES];
+                [aboutController release];
                 break;
             }
             case 4:

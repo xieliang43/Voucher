@@ -84,7 +84,7 @@
     if (dic) {
         return YES;
     }else {
-        return NO;
+        return YES;
     }
 }
 
