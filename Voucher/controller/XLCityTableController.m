@@ -147,21 +147,11 @@
     if (request.responseStatusCode == 200) {
         NSDictionary *dic = [request.responseString JSONValue];
         if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
-            NSArray *dataArray = [[dic objectForKey:@"info"] retain];
-            NSSet *set = [NSSet setWithArray:[dataArray valueForKey:@"cityPrefix"]];
-            NSMutableArray *tmpArray = [NSMutableArray array];
-            for (NSString *key in set) {
-                NSMutableArray *tmpArr = [NSMutableArray array];
-                [_dataDic setValue:tmpArr forKey:key];
-                [tmpArray addObject:key];
-            }
-            for (NSDictionary *dic in dataArray) {
-                NSMutableArray *tmpArr = [_dataDic objectForKey:[dic objectForKey:@"cityPrefix"]];
-                [tmpArr addObject:dic];
-            }
+            _dataDic = [[dic objectForKey:@"info"] retain];
+            _indexArray = [[_dataDic allKeys] retain];
             NSSortDescriptor* sortor = [[NSSortDescriptor alloc] initWithKey:@"" ascending:YES];
             NSArray* sortedDes = [[NSArray alloc] initWithObjects:&sortor count:1];
-            _indexArray = [[tmpArray sortedArrayUsingDescriptors:sortedDes] retain];
+            _indexArray = [[_indexArray sortedArrayUsingDescriptors:sortedDes] retain];
             [sortor release];
             [sortedDes release];
             [_tableView reloadData];
