@@ -109,7 +109,7 @@
     [self doSearch:nil]; 
     
     if (_refreshHeaderView == nil) {
-		_refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		_refreshHeaderView = [[WZRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
 		_refreshHeaderView.delegate = self;
 		[self.tableView addSubview:_refreshHeaderView];
 		_refreshHeaderView = _refreshHeaderView;
@@ -117,19 +117,6 @@
 	}
 	
 	[_refreshHeaderView refreshLastUpdatedDate];
-    [self showBottomRefreshControl];
-}
-
--(void)showBottomRefreshControl{
-    
-    if (_refreshHeaderView2 == nil) {
-        if (YES) {
-            _refreshHeaderView2 = [[EGORefreshTableHeaderViewEX alloc] initWithFrame: CGRectMake(0.0f, 75*20+1, self.view.frame.size.width, self.tableView.bounds.size.height)];
-            _refreshHeaderView2.delegate = self; 
-            [self.tableView addSubview:_refreshHeaderView2];
-            [_refreshHeaderView2 release];
-        }
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -351,7 +338,7 @@
 	
 	//  model should call this when its done loading
 	_reloading = NO;
-	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+	[_refreshHeaderView wzRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 	
 }
 
@@ -361,33 +348,33 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
 	
-	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+	[_refreshHeaderView wzRefreshScrollViewDidScroll:scrollView];
     
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 	
-	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	[_refreshHeaderView wzRefreshScrollViewDidEndDragging:scrollView];
 	
 }
 
 #pragma mark -
 #pragma mark EGORefreshTableHeaderDelegate Methods
 
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+- (void)wzRefreshTableHeaderDidTriggerRefresh:(WZRefreshTableHeaderView*)view{
 	
 	[self reloadTableViewDataSource];
     start = 0;
-	[self performSelector:@selector(doSearch:) withObject:nil];
+	[self doSearch:nil];
 }
 
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+- (BOOL)wzRefreshTableHeaderDataSourceIsLoading:(WZRefreshTableHeaderView*)view{
 	
 	return _reloading; // should return if data source model is reloading
 	
 }
 
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+- (NSDate*)wzRefreshTableHeaderDataSourceLastUpdated:(WZRefreshTableHeaderView*)view{
 	
 	return [NSDate date]; // should return date data source was last changed
 	

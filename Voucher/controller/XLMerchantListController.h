@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "XLMerchantCell.h"
 #import "XLOptionSelectorView.h"
-#import "EGORefreshTableHeaderView.h"
-#import "EGORefreshTableHeaderViewEX.h"
+#import "WZRefreshTableHeaderView.h"
+#import "WZLoadMoreTableFooterView.h"
 
 @interface XLMerchantListController : UIViewController
 <UITableViewDataSource,UITableViewDelegate,
-XLOptionSelectorDelegate,EGORefreshTableHeaderDelegate,EGORefreshTableHeaderDelegateEX>
+XLOptionSelectorDelegate,WZRefreshTableHeaderDelegate,WZLoadMoreTableFooterDelegate>
 {
     NSString *_merchantType;
     NSString *_distance;
@@ -25,8 +25,8 @@ XLOptionSelectorDelegate,EGORefreshTableHeaderDelegate,EGORefreshTableHeaderDele
     NSInteger start;
     NSInteger limit;
     
-    EGORefreshTableHeaderView *_refreshHeaderView;
-    EGORefreshTableHeaderViewEX *_refreshHeaderView2;
+    WZRefreshTableHeaderView *_refreshHeaderView;
+    WZLoadMoreTableFooterView *_loadMoreFooterView;
     
     BOOL _reloading;
 }
