@@ -85,6 +85,12 @@
 		CDE9A8F815AEFFCD00229991 /* XLRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE9A8F615AEFFCD00229991 /* XLRegisterController.xib */; };
 		E00F9AE115BCDFD30070A325 /* XLAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00F9ADF15BCDFD30070A325 /* XLAboutMeController.m */; };
 		E00F9AE215BCDFD30070A325 /* XLAboutMeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00F9AE015BCDFD30070A325 /* XLAboutMeController.xib */; };
+		E00F9AFC15BD43B40070A325 /* WZRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00F9AF915BD43B40070A325 /* WZRefreshTableHeaderView.m */; };
+		E00F9AFD15BD43B40070A325 /* WZLoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E00F9AFB15BD43B40070A325 /* WZLoadMoreTableFooterView.m */; };
+		E00F9B0315BD43C80070A325 /* blueArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F9AFF15BD43C80070A325 /* blueArrowDown.png */; };
+		E00F9B0415BD43C80070A325 /* blueArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F9B0015BD43C80070A325 /* blueArrowDown@2x.png */; };
+		E00F9B0515BD43C80070A325 /* blueArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F9B0115BD43C80070A325 /* blueArrowUp.png */; };
+		E00F9B0615BD43C80070A325 /* blueArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F9B0215BD43C80070A325 /* blueArrowUp@2x.png */; };
 		E03AD9DE15AFB23C00B70C12 /* XLTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9DD15AFB23C00B70C12 /* XLTabBarItem.m */; };
 		E03AD9E215AFB35400B70C12 /* XLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9E115AFB35400B70C12 /* XLTabBarController.m */; };
 		E064C97415B0008B0051E143 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E064C97215B0008B0051E143 /* search_bg@2x.png */; };
@@ -220,6 +226,14 @@
 		E00F9ADE15BCDFD30070A325 /* XLAboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLAboutMeController.h; sourceTree = "<group>"; };
 		E00F9ADF15BCDFD30070A325 /* XLAboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLAboutMeController.m; sourceTree = "<group>"; };
 		E00F9AE015BCDFD30070A325 /* XLAboutMeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLAboutMeController.xib; sourceTree = "<group>"; };
+		E00F9AF815BD43B40070A325 /* WZRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZRefreshTableHeaderView.h; sourceTree = "<group>"; };
+		E00F9AF915BD43B40070A325 /* WZRefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZRefreshTableHeaderView.m; sourceTree = "<group>"; };
+		E00F9AFA15BD43B40070A325 /* WZLoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLoadMoreTableFooterView.h; sourceTree = "<group>"; };
+		E00F9AFB15BD43B40070A325 /* WZLoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZLoadMoreTableFooterView.m; sourceTree = "<group>"; };
+		E00F9AFF15BD43C80070A325 /* blueArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowDown.png; sourceTree = "<group>"; };
+		E00F9B0015BD43C80070A325 /* blueArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrowDown@2x.png"; sourceTree = "<group>"; };
+		E00F9B0115BD43C80070A325 /* blueArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowUp.png; sourceTree = "<group>"; };
+		E00F9B0215BD43C80070A325 /* blueArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrowUp@2x.png"; sourceTree = "<group>"; };
 		E03AD9DC15AFB23C00B70C12 /* XLTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTabBarItem.h; sourceTree = "<group>"; };
 		E03AD9DD15AFB23C00B70C12 /* XLTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTabBarItem.m; sourceTree = "<group>"; };
 		E03AD9E015AFB35400B70C12 /* XLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTabBarController.h; sourceTree = "<group>"; };
@@ -338,6 +352,10 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				E00F9AFF15BD43C80070A325 /* blueArrowDown.png */,
+				E00F9B0015BD43C80070A325 /* blueArrowDown@2x.png */,
+				E00F9B0115BD43C80070A325 /* blueArrowUp.png */,
+				E00F9B0215BD43C80070A325 /* blueArrowUp@2x.png */,
 				CDA85A8915BC397600A8FEA7 /* blueArrow.png */,
 				CDA85A8A15BC397600A8FEA7 /* blueArrow@2x.png */,
 				CDB63BD915B4536D0009C410 /* city_xuanze@2x.png */,
@@ -389,6 +407,10 @@
 		CDA85A8415BC396100A8FEA7 /* RefreshTableHeaderView */ = {
 			isa = PBXGroup;
 			children = (
+				E00F9AF815BD43B40070A325 /* WZRefreshTableHeaderView.h */,
+				E00F9AF915BD43B40070A325 /* WZRefreshTableHeaderView.m */,
+				E00F9AFA15BD43B40070A325 /* WZLoadMoreTableFooterView.h */,
+				E00F9AFB15BD43B40070A325 /* WZLoadMoreTableFooterView.m */,
 				CDA85A8515BC396100A8FEA7 /* EGORefreshTableHeaderView.h */,
 				CDA85A8615BC396100A8FEA7 /* EGORefreshTableHeaderView.m */,
 				CDA85A9315BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.h */,
@@ -653,6 +675,10 @@
 				CDA85A8B15BC397600A8FEA7 /* blueArrow.png in Resources */,
 				CDA85A8C15BC397600A8FEA7 /* blueArrow@2x.png in Resources */,
 				E00F9AE215BCDFD30070A325 /* XLAboutMeController.xib in Resources */,
+				E00F9B0315BD43C80070A325 /* blueArrowDown.png in Resources */,
+				E00F9B0415BD43C80070A325 /* blueArrowDown@2x.png in Resources */,
+				E00F9B0515BD43C80070A325 /* blueArrowUp.png in Resources */,
+				E00F9B0615BD43C80070A325 /* blueArrowUp@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +726,8 @@
 				CDA85A9515BC3EDA00A8FEA7 /* EGORefreshTableHeaderViewEX.m in Sources */,
 				CDA85A9815BC40E600A8FEA7 /* CTLoadImageOperation.m in Sources */,
 				E00F9AE115BCDFD30070A325 /* XLAboutMeController.m in Sources */,
+				E00F9AFC15BD43B40070A325 /* WZRefreshTableHeaderView.m in Sources */,
+				E00F9AFD15BD43B40070A325 /* WZLoadMoreTableFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
