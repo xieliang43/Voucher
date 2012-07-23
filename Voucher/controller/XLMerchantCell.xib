@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">1179</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUITableViewCell</string>
@@ -61,10 +61,6 @@
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">test@2x.png</string>
-								</object>
 							</object>
 							<object class="IBUILabel" id="545324766">
 								<reference key="NSNextResponder" ref="813175186"/>
@@ -79,7 +75,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">阿斯顿英语</string>
+								<string key="IBUIText"/>
 								<object class="NSColor" key="IBUITextColor" id="197154863">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -128,7 +124,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">500米</string>
+								<string key="IBUIText"/>
 								<reference key="IBUITextColor" ref="197154863"/>
 								<reference key="IBUIHighlightedColor" ref="419928552"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -171,7 +167,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">共100张，剩余25张</string>
+								<string key="IBUIText"/>
 								<reference key="IBUITextColor" ref="197154863"/>
 								<reference key="IBUIHighlightedColor" ref="419928552"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -386,8 +382,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="getVoucher@2x.png">{152, 46}</string>
 			<string key="location@2x.png">{18, 26}</string>
-			<string key="test@2x.png">{198, 128}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>
 </archive>

@@ -32,6 +32,8 @@
 		CD3E4D6115ADD6E50059E392 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3E4D5C15ADD6E50059E392 /* SBJsonWriter.m */; };
 		CD3E4D6615ADDEAE0059E392 /* XLMerchantListController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3E4D6415ADDEAE0059E392 /* XLMerchantListController.m */; };
 		CD3E4D6715ADDEAE0059E392 /* XLMerchantListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3E4D6515ADDEAE0059E392 /* XLMerchantListController.xib */; };
+		CD687FF315BD88A9009E497C /* XLMerchantDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD687FF115BD88A9009E497C /* XLMerchantDetailController.m */; };
+		CD687FF415BD88A9009E497C /* XLMerchantDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD687FF215BD88A9009E497C /* XLMerchantDetailController.xib */; };
 		CD6EE79015BAE49D003561E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */; };
 		CD83789B15B2D86B0072A0FE /* XLMerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD83789A15B2D86B0072A0FE /* XLMerchantCell.xib */; };
 		CD83789E15B2D9450072A0FE /* test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD83789D15B2D9450072A0FE /* test@2x.png */; };
@@ -143,6 +145,9 @@
 		CD3E4D6315ADDEAE0059E392 /* XLMerchantListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLMerchantListController.h; sourceTree = "<group>"; };
 		CD3E4D6415ADDEAE0059E392 /* XLMerchantListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMerchantListController.m; sourceTree = "<group>"; };
 		CD3E4D6515ADDEAE0059E392 /* XLMerchantListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantListController.xib; sourceTree = "<group>"; };
+		CD687FF015BD88A9009E497C /* XLMerchantDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLMerchantDetailController.h; sourceTree = "<group>"; };
+		CD687FF115BD88A9009E497C /* XLMerchantDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMerchantDetailController.m; sourceTree = "<group>"; };
+		CD687FF215BD88A9009E497C /* XLMerchantDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantDetailController.xib; sourceTree = "<group>"; };
 		CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CD83789A15B2D86B0072A0FE /* XLMerchantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantCell.xib; sourceTree = "<group>"; };
 		CD83789D15B2D9450072A0FE /* test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test@2x.png"; sourceTree = "<group>"; };
@@ -332,6 +337,9 @@
 				E064C97D15B013B80051E143 /* XLMerchantCell.h */,
 				E064C97E15B013B80051E143 /* XLMerchantCell.m */,
 				CD83789A15B2D86B0072A0FE /* XLMerchantCell.xib */,
+				CD687FF015BD88A9009E497C /* XLMerchantDetailController.h */,
+				CD687FF115BD88A9009E497C /* XLMerchantDetailController.m */,
+				CD687FF215BD88A9009E497C /* XLMerchantDetailController.xib */,
 				E08AEF3815AFCD0A00A4A0F3 /* XLPocketController.h */,
 				E08AEF3915AFCD0A00A4A0F3 /* XLPocketController.m */,
 				E08AEF3A15AFCD0A00A4A0F3 /* XLPocketController.xib */,
@@ -661,6 +669,7 @@
 				E00F9B0415BD43C80070A325 /* blueArrowDown@2x.png in Resources */,
 				E00F9B0515BD43C80070A325 /* blueArrowUp.png in Resources */,
 				E00F9B0615BD43C80070A325 /* blueArrowUp@2x.png in Resources */,
+				CD687FF415BD88A9009E497C /* XLMerchantDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +717,7 @@
 				E00F9AE115BCDFD30070A325 /* XLAboutMeController.m in Sources */,
 				E00F9AFC15BD43B40070A325 /* WZRefreshTableHeaderView.m in Sources */,
 				E00F9AFD15BD43B40070A325 /* WZLoadMoreTableFooterView.m in Sources */,
+				CD687FF315BD88A9009E497C /* XLMerchantDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

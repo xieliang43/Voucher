@@ -118,12 +118,12 @@
 {
     double longt = newLocation.coordinate.longitude;
     double lati = newLocation.coordinate.latitude;
-    if (abs(longt) < 0.00000001 && abs(lati) < 0.00000001) {
+    if (abs(longt) < 0.000001 || abs(lati) < 0.000001) {
         return;
     }
     
-    NSString *longitude = [NSString stringWithFormat:@"%.7f",oldLocation.coordinate.longitude];
-    NSString *latitude = [NSString stringWithFormat:@"%.7f",oldLocation.coordinate.latitude];
+    NSString *longitude = [NSString stringWithFormat:@"%.7f",newLocation.coordinate.longitude];
+    NSString *latitude = [NSString stringWithFormat:@"%.7f",newLocation.coordinate.latitude];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:longitude,@"longitude",latitude,@"latitude",nil];
     [XLTools saveUserLocation:dic];
 }

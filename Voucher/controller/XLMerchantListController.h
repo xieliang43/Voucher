@@ -11,6 +11,8 @@
 #import "XLOptionSelectorView.h"
 #import "WZRefreshTableHeaderView.h"
 #import "WZLoadMoreTableFooterView.h"
+#import "CTLoadImageOperation.h"
+#import "XLMerchantDetailController.h"
 
 @interface XLMerchantListController : UIViewController
 <UITableViewDataSource,UITableViewDelegate,
@@ -29,6 +31,8 @@ XLOptionSelectorDelegate,WZRefreshTableHeaderDelegate,WZLoadMoreTableFooterDeleg
     WZLoadMoreTableFooterView *_loadMoreFooterView;
     
     BOOL _reloading;
+    
+    NSOperationQueue *_queue;
 }
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;

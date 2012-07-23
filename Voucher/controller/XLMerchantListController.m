@@ -31,6 +31,8 @@
     [_distanceBtn release];
     [_tableView release];
     
+    [_queue release];
+    
     [super dealloc];
 }
 
@@ -68,6 +70,9 @@
         // Custom initialization
         start = 0;
         limit = 15;
+        
+        _queue = [[NSOperationQueue alloc] init];
+        [_queue setMaxConcurrentOperationCount:2];
     }
     return self;
 }
@@ -173,9 +178,9 @@
     [req setDidFinishSelector:@selector(didFinishGetShops:)];
     [req setDidFailSelector:@selector(didFailGetShops:)];
     req.requestMethod = @"POST";
-    [req setPostValue:_area forKey:@"area"];
+    [req setPostValue:_area forKey:@"areaId"];
     [req setPostValue:_distance forKey:@"distance"];
-    [req setPostValue:_merchantType forKey:@"shopType"];
+    [req setPostValue:_merchantType forKey:@"shopTypeId"];
     [req setPostValue:[NSString stringWithFormat:@"%d",start] forKey:@"start"];
     [req setPostValue:[NSString stringWithFormat:@"%d",limit] forKey:@"limit"];
     [req setPostValue:[[XLTools userLocation] objectForKey:@"longitude"] forKey:@"longitude"];
@@ -192,21 +197,41 @@
 //datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return [_dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
+    XLMerchantCell *cell = nil;
     static NSString *cellId = @"CELLID";
-    cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    cell = (XLMerchantCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
         cell= (XLMerchantCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"XLMerchantCell" owner:self options:nil]  lastObject];
     }
+    
     if (indexPath.row%2 == 0) {
         cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"home_list_selected.png"]];
     }else {
         cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"home_list_nor.png"]];
+    }
+    
+    NSDictionary *tmpDic = [_dataArray objectAtIndex:indexPath.row];
+    cell.nameLabel.text = [tmpDic objectForKey:@"shopName"];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%d米",[[tmpDic objectForKey:@"distance"] intValue]];
+    cell.addressLabel.text = [tmpDic objectForKey:@"shopAddress"];
+    
+    NSString *imageUrlStr = [tmpDic objectForKey:@"image"];
+    UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
+    if (image) {
+        cell.logoView.image = image;
+    } else {
+        NSURL *url = [NSURL URLWithString:imageUrlStr];
+        CTLoadImageOperation *operation = [[CTLoadImageOperation alloc] initWithUrl:url
+                                                                             target:self
+                                                                             action:@selector(didLoadImage:) 
+                                                                          indexPath:indexPath];
+        [_queue addOperation:operation];
+        [operation release];
     }
     
     return cell;
@@ -221,6 +246,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    XLMerchantDetailController *detailCon = [[XLMerchantDetailController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:detailCon animated:YES];
+    [detailCon release];
+}
+
+#pragma mark - NSOperation 回调
+- (void)didLoadImage:(NSDictionary *)info
+{
+    NSIndexPath *indexPath = [info objectForKey:@"indexPath"];
+    XLMerchantCell *cell = (XLMerchantCell *)[_tableView cellForRowAtIndexPath:indexPath];
+    if ([info objectForKey:@"image"]) {
+        cell.logoView.image = [info objectForKey:@"image"];
+        NSData *data = UIImageJPEGRepresentation([info objectForKey:@"image"], 1.0);
+        NSString *path = [[_dataArray objectAtIndex:indexPath.row] objectForKey:@"image"];
+        [XLTools saveFileToCache:data withName:[XLTools md5:path]];
+    }
 }
 
 #pragma mark - ASIHTTPRequestDelegate
@@ -271,6 +312,7 @@
                 _dataArray = nil;
             }
             _dataArray = [[dic objectForKey:@"info"] retain];
+            [_tableView reloadData];
         }else {
             Debug(@"%@",[dic objectForKey:@"resultInfo"]);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
@@ -317,7 +359,7 @@
         NSString *disString = [NSString stringWithFormat:@"%@米",obj];
         [_distanceBtn setTitle:disString forState:UIControlStateNormal];
     }else {
-        _merchantType = [[NSString stringWithFormat:@"%d,oid"] retain];
+        _merchantType = [[NSString stringWithFormat:@"%d",oid] retain];
         [_merchantTypeBtn setTitle:obj forState:UIControlStateNormal];
     }
     [self doSearch:nil];
