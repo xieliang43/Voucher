@@ -10,6 +10,20 @@
 
 @implementation XLMerchantCell
 
+@synthesize logoView = _logoView;
+@synthesize nameLabel = _nameLabel;
+@synthesize distanceLabel = _distanceLabel;
+@synthesize addressLabel = _addressLabel;
+
+- (void)dealloc
+{
+    [_logoView release];
+    [_nameLabel release];
+    [_distanceLabel release];
+    [_addressLabel release];
+    [super dealloc];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

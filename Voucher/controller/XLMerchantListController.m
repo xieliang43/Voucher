@@ -117,6 +117,19 @@
 	}
 	
 	[_refreshHeaderView refreshLastUpdatedDate];
+    [self showBottomRefreshControl];
+}
+
+-(void)showBottomRefreshControl{
+    
+    if (_refreshHeaderView2 == nil) {
+        if (YES) {
+            _refreshHeaderView2 = [[EGORefreshTableHeaderViewEX alloc] initWithFrame: CGRectMake(0.0f, 75*20+1, self.view.frame.size.width, self.tableView.bounds.size.height)];
+            _refreshHeaderView2.delegate = self; 
+            [self.tableView addSubview:_refreshHeaderView2];
+            [_refreshHeaderView2 release];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

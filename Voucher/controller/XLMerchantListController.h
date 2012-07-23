@@ -14,7 +14,7 @@
 
 @interface XLMerchantListController : UIViewController
 <UITableViewDataSource,UITableViewDelegate,
-XLOptionSelectorDelegate,EGORefreshTableHeaderDelegate>
+XLOptionSelectorDelegate,EGORefreshTableHeaderDelegate,EGORefreshTableHeaderDelegateEX>
 {
     NSString *_merchantType;
     NSString *_distance;
@@ -26,6 +26,7 @@ XLOptionSelectorDelegate,EGORefreshTableHeaderDelegate>
     NSInteger limit;
     
     EGORefreshTableHeaderView *_refreshHeaderView;
+    EGORefreshTableHeaderViewEX *_refreshHeaderView2;
     
     BOOL _reloading;
 }
