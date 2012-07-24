@@ -13,3 +13,7 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+
+效果图/.DS_Store
+
+.DS_Store
