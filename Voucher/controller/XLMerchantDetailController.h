@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XLMerchantInfoCell.h"
+#import "XLVoucherCell.h"
 
 @interface XLMerchantDetailController : UIViewController
+<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,retain) IBOutlet UITableView *tableView;
 
