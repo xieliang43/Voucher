@@ -85,7 +85,7 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">0</int>
-								<float key="IBUIMinimumFontSize">14</float>
+								<float key="IBUIMinimumFontSize">15</float>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">1</int>
 									<double key="pointSize">14</double>
@@ -157,7 +157,7 @@
 							<object class="IBUILabel" id="960651751">
 								<reference key="NSNextResponder" ref="813175186"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{112, 51}, {208, 21}}</string>
+								<string key="NSFrame">{{112, 53}, {208, 21}}</string>
 								<reference key="NSSuperview" ref="813175186"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -272,8 +272,8 @@
 							<reference ref="253133996"/>
 							<reference ref="730020778"/>
 							<reference ref="589787710"/>
-							<reference ref="960651751"/>
 							<reference ref="686123289"/>
+							<reference ref="960651751"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
