@@ -16,12 +16,27 @@
 
 @synthesize tableView = _tableView;
 @synthesize merchantInfo = _merchantInfo;
+@synthesize logoView = _logoView;
+@synthesize nameLabel = _nameLabel;
+@synthesize addressLabel = _addressLabel;
+@synthesize phoneBtn = _phoneBtn;
+@synthesize descbtn = _descbtn;
+@synthesize numLabel = _numLabel;
 
 - (void)dealloc
 {
     [_tableView release];
     [_merchantInfo release];
     [_dataArray release];
+    [_logoView release];
+    [_nameLabel release];
+    [_addressLabel release];
+    [_phoneBtn release];
+    [_descbtn release];
+    [_numLabel release];
+    
+    [_queue release];
+    
     [super dealloc];
 }
 
@@ -30,6 +45,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _queue = [[NSOperationQueue alloc] init];
+        [_queue setMaxConcurrentOperationCount:2];
     }
     return self;
 }
@@ -71,6 +88,16 @@
     // Do any additional setup after loading the view from its nib.
     
     [self setNavigationBar];
+    
+    NSString *urlStr = [XLTools getInterfaceByKey:@"get_vouchers"];
+    Debug(@"%@",urlStr);
+    NSURL *url = [NSURL URLWithString:urlStr];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
+    req.delegate = self;
+    req.requestMethod = @"POST";
+    [req setPostValue:[_merchantInfo objectForKey:@"id"] forKey:@"shopId"];
+    [req startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 - (void)viewDidUnload
@@ -85,66 +112,57 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - UITableViewDelegate & UITableViewDataSource
-//datasource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)viewWillAppear:(BOOL)animated
 {
-    return 3;
+    _nameLabel.text = [_merchantInfo objectForKey:@"shopName"];
+    _addressLabel.text = [_merchantInfo objectForKey:@"shopAddress"];
+    
+    NSString *imageUrlStr = [_merchantInfo objectForKey:@"image"];
+    UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
+    if (image) {
+        _logoView.image = image;
+    } else {
+        NSURL *url = [NSURL URLWithString:imageUrlStr];
+        CTLoadImageOperation *operation = [[CTLoadImageOperation alloc] initWithUrl:url
+                                                                             target:self
+                                                                             action:@selector(didLoadImage:) 
+                                                                          indexPath:nil];
+        [_queue addOperation:operation];
+        [operation release];
+    }
 }
 
+#pragma mark - NSOperation 回调
+- (void)didLoadImage:(NSDictionary *)info
+{
+    if ([info objectForKey:@"image"]) {
+        _logoView.image = [info objectForKey:@"image"];
+        NSData *data = UIImageJPEGRepresentation([info objectForKey:@"image"], 1.0);
+        NSString *path = [_merchantInfo objectForKey:@"image"];
+        [XLTools saveFileToCache:data withName:[XLTools md5:path]];
+    }
+}
+
+#pragma mark - UITableViewDelegate & UITableViewDataSource
+//delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }else if (section == 1) {
-        return 2;
-    }else {
-        return 10;
-    }
+    return [_dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
-    static NSString *cellId = @"DETAIL_CELL";
+    XLVoucherCell *cell = nil;
+    static NSString *cellId = @"XLVoucherCell";
     
-    switch (indexPath.section) {
-        case 0:
-        {
-            XLMerchantInfoCell *infoCell = nil;
-            infoCell = (XLMerchantInfoCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
-            if (!infoCell) {
-                infoCell = [[[NSBundle mainBundle] loadNibNamed:@"XLMerchantInfoCell" owner:self options:nil] lastObject];
-            }
-            cell = infoCell;
-            break;
-        }
-        case 1:
-        {
-            cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-            if (!cell) {
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellId] autorelease];
-            }
-            if (indexPath.row == 0) {
-                cell.textLabel.text = [NSString stringWithFormat:@"电话：%@",@"123123123"];
-            }else {
-                cell.textLabel.text = @"商家简介";
-            }
-            break;
-        }
-        case 2:
-        {
-            XLVoucherCell *voucherCell = nil;
-            voucherCell = (XLVoucherCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
-            if (!voucherCell) {
-                voucherCell = [[[NSBundle mainBundle] loadNibNamed:@"XLVoucherCell" owner:self options:nil] lastObject];
-            }
-            cell = voucherCell;
-            break;
-        }
-        default:
-            break;
+    cell = (XLVoucherCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"XLVoucherCell" owner:self options:nil] lastObject];
     }
+    NSDictionary *infoDic = [_dataArray objectAtIndex:indexPath.row];
+    cell.priceLabel.text = [[infoDic objectForKey:@"price"] stringValue];
+    cell.noLabel.text = [infoDic objectForKey:@"vchNo"];
+    cell.dateLabel.text = [infoDic objectForKey:@"endDate"];
     return cell;
 }
 
@@ -152,17 +170,61 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 75;
+        return 100;
     }else if (indexPath.section == 1) {
-        return 44;
+        return 40;
     }else {
-        return 88;
+        return 105;
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - ASIHTTPRequestDelegate
+- (void)requestFinished:(ASIHTTPRequest *)request
 {
-    
+    Debug(@"%@",request.responseString);
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (request.responseStatusCode == 200) {
+        NSDictionary *dic = [request.responseString JSONValue];
+        if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
+            NSDictionary *dataDic = [dic objectForKey:@"info"];
+            int total = [[dataDic objectForKey:@"total"] intValue];
+            int rest = [[dataDic objectForKey:@"rest"] intValue];
+            _numLabel.text = [NSString stringWithFormat:@"剩%d张/共%d张",rest,total];
+            _dataArray = [[dataDic objectForKey:@"vouchers"] retain];
+            [_tableView reloadData];
+        }else {
+            Debug(@"%@",[dic objectForKey:@"resultInfo"]);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:[dic objectForKey:@"resultInfo"] 
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+    }else {
+        Debug(@"%@",request.responseStatusCode);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"服务器内部异常！" 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    Debug(@"网络链接或服务器问题！");
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请检查网络链接或联系管理员！" 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 @end

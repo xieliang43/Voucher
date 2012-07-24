@@ -217,7 +217,7 @@
     
     NSDictionary *tmpDic = [_dataArray objectAtIndex:indexPath.row];
     cell.nameLabel.text = [tmpDic objectForKey:@"shopName"];
-    cell.distanceLabel.text = [NSString stringWithFormat:@"%d米",[[tmpDic objectForKey:@"distance"] intValue]];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.2fkm",[[tmpDic objectForKey:@"distance"] intValue]/1000.0];
     cell.addressLabel.text = [tmpDic objectForKey:@"shopAddress"];
     
     NSString *imageUrlStr = [tmpDic objectForKey:@"image"];
@@ -247,6 +247,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     XLMerchantDetailController *detailCon = [[XLMerchantDetailController alloc] initWithNibName:nil bundle:nil];
+    NSDictionary *dic = [_dataArray objectAtIndex:indexPath.row];
+    detailCon.merchantInfo = dic;
     [self.navigationController pushViewController:detailCon animated:YES];
     [detailCon release];
 }
@@ -311,7 +313,7 @@
                 [_dataArray release];
                 _dataArray = nil;
             }
-            _dataArray = [[dic objectForKey:@"info"] retain];
+            _dataArray = [[[dic objectForKey:@"info"] objectForKey:@"shops"] retain];
             [_tableView reloadData];
         }else {
             Debug(@"%@",[dic objectForKey:@"resultInfo"]);

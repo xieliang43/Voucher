@@ -10,6 +10,20 @@
 
 @implementation XLVoucherCell
 
+@synthesize priceLabel = _priceLabel;
+@synthesize noLabel = _noLabel;
+@synthesize dateLabel = _dateLabel;
+@synthesize purchaseBtn = _purchaseBtn;
+
+- (void)dealloc
+{
+    [_priceLabel release];
+    [_noLabel release];
+    [_dateLabel release];
+    [_purchaseBtn release];
+    [super dealloc];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

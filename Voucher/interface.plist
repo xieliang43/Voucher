@@ -22,5 +22,7 @@
 	<string>shopAction!getShopAreas.action</string>
 	<key>get_shops</key>
 	<string>shopAction!getShops.action</string>
+	<key>get_vouchers</key>
+	<string>shopAction!getVouchers.action</string>
 </dict>
 </plist>

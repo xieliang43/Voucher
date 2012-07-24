@@ -60,6 +60,13 @@
 		CDB63BDF15B457D20009C410 /* XLPublishController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BDD15B457D20009C410 /* XLPublishController.xib */; };
 		CDB63BE315B45B820009C410 /* XLAdviseController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB63BE115B45B810009C410 /* XLAdviseController.m */; };
 		CDB63BE415B45B820009C410 /* XLAdviseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BE215B45B810009C410 /* XLAdviseController.xib */; };
+		CDC5E96315BECDBF00C96509 /* info_topbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC5E96215BECDBF00C96509 /* info_topbg@2x.png */; };
+		CDC5E96615BECE0E00C96509 /* info_midbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC5E96515BECE0E00C96509 /* info_midbg@2x.png */; };
+		CDC5E96815BECF3100C96509 /* info_couponbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC5E96715BECF3100C96509 /* info_couponbg@2x.png */; };
+		CDC5E96B15BEDF3C00C96509 /* info_vouchers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC5E96915BEDF3C00C96509 /* info_vouchers@2x.png */; };
+		CDC5E96C15BEDF3C00C96509 /* info_vouchers.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC5E96A15BEDF3C00C96509 /* info_vouchers.png */; };
+		CDC5E96F15BEEC1500C96509 /* infp_rush@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC5E96D15BEEC1500C96509 /* infp_rush@2x.png */; };
+		CDC5E97015BEEC1500C96509 /* infp_rushed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC5E96E15BEEC1500C96509 /* infp_rushed@2x.png */; };
 		CDD19D7515989C7F006D63D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD19D7415989C7F006D63D0 /* UIKit.framework */; };
 		CDD19D7715989C7F006D63D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD19D7615989C7F006D63D0 /* Foundation.framework */; };
 		CDD19D7915989C7F006D63D0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD19D7815989C7F006D63D0 /* CoreGraphics.framework */; };
@@ -91,9 +98,7 @@
 		E00F9B0615BD43C80070A325 /* blueArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F9B0215BD43C80070A325 /* blueArrowUp@2x.png */; };
 		E03AD9DE15AFB23C00B70C12 /* XLTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9DD15AFB23C00B70C12 /* XLTabBarItem.m */; };
 		E03AD9E215AFB35400B70C12 /* XLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9E115AFB35400B70C12 /* XLTabBarController.m */; };
-		E05C50B815BE72E30053C33F /* XLMerchantInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E05C50B715BE72E30053C33F /* XLMerchantInfoCell.m */; };
 		E05C50BC15BE73500053C33F /* XLVoucherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E05C50BB15BE73500053C33F /* XLVoucherCell.m */; };
-		E05C50C015BE73A00053C33F /* XLMerchantInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E05C50BF15BE73A00053C33F /* XLMerchantInfoCell.xib */; };
 		E05C50C215BE73B30053C33F /* XLVoucherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E05C50C115BE73B30053C33F /* XLVoucherCell.xib */; };
 		E064C97415B0008B0051E143 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E064C97215B0008B0051E143 /* search_bg@2x.png */; };
 		E064C97515B0008B0051E143 /* search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E064C97315B0008B0051E143 /* search_icon@2x.png */; };
@@ -183,6 +188,13 @@
 		CDB63BE015B45B810009C410 /* XLAdviseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLAdviseController.h; sourceTree = "<group>"; };
 		CDB63BE115B45B810009C410 /* XLAdviseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLAdviseController.m; sourceTree = "<group>"; };
 		CDB63BE215B45B810009C410 /* XLAdviseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLAdviseController.xib; sourceTree = "<group>"; };
+		CDC5E96215BECDBF00C96509 /* info_topbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_topbg@2x.png"; sourceTree = "<group>"; };
+		CDC5E96515BECE0E00C96509 /* info_midbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_midbg@2x.png"; sourceTree = "<group>"; };
+		CDC5E96715BECF3100C96509 /* info_couponbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_couponbg@2x.png"; sourceTree = "<group>"; };
+		CDC5E96915BEDF3C00C96509 /* info_vouchers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_vouchers@2x.png"; sourceTree = "<group>"; };
+		CDC5E96A15BEDF3C00C96509 /* info_vouchers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_vouchers.png; sourceTree = "<group>"; };
+		CDC5E96D15BEEC1500C96509 /* infp_rush@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infp_rush@2x.png"; sourceTree = "<group>"; };
+		CDC5E96E15BEEC1500C96509 /* infp_rushed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infp_rushed@2x.png"; sourceTree = "<group>"; };
 		CDD19D7015989C7F006D63D0 /* Voucher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voucher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD19D7415989C7F006D63D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CDD19D7615989C7F006D63D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -237,11 +249,8 @@
 		E03AD9DD15AFB23C00B70C12 /* XLTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTabBarItem.m; sourceTree = "<group>"; };
 		E03AD9E015AFB35400B70C12 /* XLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTabBarController.h; sourceTree = "<group>"; };
 		E03AD9E115AFB35400B70C12 /* XLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTabBarController.m; sourceTree = "<group>"; };
-		E05C50B615BE72E30053C33F /* XLMerchantInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLMerchantInfoCell.h; sourceTree = "<group>"; };
-		E05C50B715BE72E30053C33F /* XLMerchantInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMerchantInfoCell.m; sourceTree = "<group>"; };
 		E05C50BA15BE73500053C33F /* XLVoucherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLVoucherCell.h; sourceTree = "<group>"; };
 		E05C50BB15BE73500053C33F /* XLVoucherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLVoucherCell.m; sourceTree = "<group>"; };
-		E05C50BF15BE73A00053C33F /* XLMerchantInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantInfoCell.xib; sourceTree = "<group>"; };
 		E05C50C115BE73B30053C33F /* XLVoucherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLVoucherCell.xib; sourceTree = "<group>"; };
 		E064C97215B0008B0051E143 /* search_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bg@2x.png"; sourceTree = "<group>"; };
 		E064C97315B0008B0051E143 /* search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_icon@2x.png"; sourceTree = "<group>"; };
@@ -350,9 +359,6 @@
 				CD687FF015BD88A9009E497C /* XLMerchantDetailController.h */,
 				CD687FF115BD88A9009E497C /* XLMerchantDetailController.m */,
 				CD687FF215BD88A9009E497C /* XLMerchantDetailController.xib */,
-				E05C50B615BE72E30053C33F /* XLMerchantInfoCell.h */,
-				E05C50B715BE72E30053C33F /* XLMerchantInfoCell.m */,
-				E05C50BF15BE73A00053C33F /* XLMerchantInfoCell.xib */,
 				E05C50BA15BE73500053C33F /* XLVoucherCell.h */,
 				E05C50BB15BE73500053C33F /* XLVoucherCell.m */,
 				E05C50C115BE73B30053C33F /* XLVoucherCell.xib */,
@@ -366,6 +372,13 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				CDC5E96D15BEEC1500C96509 /* infp_rush@2x.png */,
+				CDC5E96E15BEEC1500C96509 /* infp_rushed@2x.png */,
+				CDC5E96215BECDBF00C96509 /* info_topbg@2x.png */,
+				CDC5E96515BECE0E00C96509 /* info_midbg@2x.png */,
+				CDC5E96715BECF3100C96509 /* info_couponbg@2x.png */,
+				CDC5E96915BEDF3C00C96509 /* info_vouchers@2x.png */,
+				CDC5E96A15BEDF3C00C96509 /* info_vouchers.png */,
 				E00F9AFF15BD43C80070A325 /* blueArrowDown.png */,
 				E00F9B0015BD43C80070A325 /* blueArrowDown@2x.png */,
 				E00F9B0115BD43C80070A325 /* blueArrowUp.png */,
@@ -686,8 +699,14 @@
 				E00F9B0515BD43C80070A325 /* blueArrowUp.png in Resources */,
 				E00F9B0615BD43C80070A325 /* blueArrowUp@2x.png in Resources */,
 				CD687FF415BD88A9009E497C /* XLMerchantDetailController.xib in Resources */,
-				E05C50C015BE73A00053C33F /* XLMerchantInfoCell.xib in Resources */,
 				E05C50C215BE73B30053C33F /* XLVoucherCell.xib in Resources */,
+				CDC5E96315BECDBF00C96509 /* info_topbg@2x.png in Resources */,
+				CDC5E96615BECE0E00C96509 /* info_midbg@2x.png in Resources */,
+				CDC5E96815BECF3100C96509 /* info_couponbg@2x.png in Resources */,
+				CDC5E96B15BEDF3C00C96509 /* info_vouchers@2x.png in Resources */,
+				CDC5E96C15BEDF3C00C96509 /* info_vouchers.png in Resources */,
+				CDC5E96F15BEEC1500C96509 /* infp_rush@2x.png in Resources */,
+				CDC5E97015BEEC1500C96509 /* infp_rushed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,7 +755,6 @@
 				E00F9AFC15BD43B40070A325 /* WZRefreshTableHeaderView.m in Sources */,
 				E00F9AFD15BD43B40070A325 /* WZLoadMoreTableFooterView.m in Sources */,
 				CD687FF315BD88A9009E497C /* XLMerchantDetailController.m in Sources */,
-				E05C50B815BE72E30053C33F /* XLMerchantInfoCell.m in Sources */,
 				E05C50BC15BE73500053C33F /* XLVoucherCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
