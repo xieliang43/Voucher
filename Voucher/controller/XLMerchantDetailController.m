@@ -15,10 +15,13 @@
 @implementation XLMerchantDetailController
 
 @synthesize tableView = _tableView;
+@synthesize merchantInfo = _merchantInfo;
 
 - (void)dealloc
 {
     [_tableView release];
+    [_merchantInfo release];
+    [_dataArray release];
     [super dealloc];
 }
 

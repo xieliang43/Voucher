@@ -12,7 +12,11 @@
 
 @interface XLMerchantDetailController : UIViewController
 <UITableViewDelegate,UITableViewDataSource>
+{
+    NSArray *_dataArray;
+}
 
 @property(nonatomic,retain) IBOutlet UITableView *tableView;
+@property(nonatomic,retain) NSDictionary *merchantInfo;
 
 @end
