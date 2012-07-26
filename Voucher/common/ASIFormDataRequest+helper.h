@@ -6,10 +6,11 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "XLTools.h"
 
-@interface ASIHTTPRequest (helper)
+@interface ASIFormDataRequest (helper)
 
-- (void)addDefaultHeader;
+- (void)addDefaultPostValue;
 
 @end

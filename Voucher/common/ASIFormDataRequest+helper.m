@@ -6,16 +6,23 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ASIHTTPRequest+helper.h"
+#import "ASIFormDataRequest+helper.h"
 
-@implementation ASIHTTPRequest (helper)
+@implementation ASIFormDataRequest (helper)
 
-- (void)addDefaultHeader
+- (void)addDefaultPostValue
 {
-    [self addRequestHeader:@"userId" value:@""];
-    [self addRequestHeader:@"token" value:@""];
-    [self addRequestHeader:@"uuid" value:@""];
-    [self addRequestHeader:@"deviceType" value:@"1"];
+    NSDictionary *info = [XLTools getUserInfo];
+    if (info) {
+        [self setPostValue:[[info objectForKey:@"id"] stringValue] forKey:@"userId"];
+        [self setPostValue:[info objectForKey:@"token"] forKey:@"token"];
+    }
+    NSDictionary *cityInfo = [XLTools getCityInfo];
+    if (cityInfo) {
+        [self setPostValue:[[cityInfo objectForKey:@"id"] stringValue] forKey:@"cityId"];
+    }
+    [self setPostValue:@"" forKey:@"uuid"];
+    [self setPostValue:@"1" forKey:@"deviceType"];
 }
 
 @end

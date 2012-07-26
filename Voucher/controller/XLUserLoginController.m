@@ -126,7 +126,7 @@
     req.delegate = self;
     [req addPostValue:_usernameField.text forKey:@"phoneNo"];
     [req addPostValue:_passwordField.text forKey:@"password"];
-    [req addDefaultHeader];
+    [req addDefaultPostValue];
     [req startAsynchronous];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }

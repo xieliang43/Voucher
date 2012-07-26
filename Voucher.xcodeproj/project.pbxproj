@@ -11,7 +11,7 @@
 		CD0A8E9E15A4662A001B4DD5 /* XLUserLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0A8E9C15A4662A001B4DD5 /* XLUserLoginController.xib */; };
 		CD0A8EA115A46C9D001B4DD5 /* XLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0A8EA015A46C9D001B4DD5 /* XLTools.m */; };
 		CD0A8EA315A46CEA001B4DD5 /* interface.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD0A8EA215A46CEA001B4DD5 /* interface.plist */; };
-		CD0A8EAA15A46EDA001B4DD5 /* ASIHTTPRequest+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0A8EA915A46EDA001B4DD5 /* ASIHTTPRequest+helper.m */; };
+		CD0A8EAA15A46EDA001B4DD5 /* ASIFormDataRequest+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0A8EA915A46EDA001B4DD5 /* ASIFormDataRequest+helper.m */; };
 		CD3E4D4015ADBA320059E392 /* feild_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3E4D3415ADBA320059E392 /* feild_bg@2x.png */; };
 		CD3E4D4115ADBA320059E392 /* go_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3E4D3515ADBA320059E392 /* go_back@2x.png */; };
 		CD3E4D4215ADBA320059E392 /* home_tab_item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3E4D3615ADBA320059E392 /* home_tab_item@2x.png */; };
@@ -123,8 +123,8 @@
 		CD0A8E9F15A46C9D001B4DD5 /* XLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTools.h; sourceTree = "<group>"; };
 		CD0A8EA015A46C9D001B4DD5 /* XLTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTools.m; sourceTree = "<group>"; };
 		CD0A8EA215A46CEA001B4DD5 /* interface.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface.plist; sourceTree = "<group>"; };
-		CD0A8EA815A46EDA001B4DD5 /* ASIHTTPRequest+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+helper.h"; sourceTree = "<group>"; };
-		CD0A8EA915A46EDA001B4DD5 /* ASIHTTPRequest+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+helper.m"; sourceTree = "<group>"; };
+		CD0A8EA815A46EDA001B4DD5 /* ASIFormDataRequest+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "ASIFormDataRequest+helper.h"; sourceTree = "<group>"; };
+		CD0A8EA915A46EDA001B4DD5 /* ASIFormDataRequest+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIFormDataRequest+helper.m"; sourceTree = "<group>"; };
 		CD3E4D3415ADBA320059E392 /* feild_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feild_bg@2x.png"; sourceTree = "<group>"; };
 		CD3E4D3515ADBA320059E392 /* go_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go_back@2x.png"; sourceTree = "<group>"; };
 		CD3E4D3615ADBA320059E392 /* home_tab_item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_tab_item@2x.png"; sourceTree = "<group>"; };
@@ -552,8 +552,8 @@
 			children = (
 				CD0A8E9F15A46C9D001B4DD5 /* XLTools.h */,
 				CD0A8EA015A46C9D001B4DD5 /* XLTools.m */,
-				CD0A8EA815A46EDA001B4DD5 /* ASIHTTPRequest+helper.h */,
-				CD0A8EA915A46EDA001B4DD5 /* ASIHTTPRequest+helper.m */,
+				CD0A8EA815A46EDA001B4DD5 /* ASIFormDataRequest+helper.h */,
+				CD0A8EA915A46EDA001B4DD5 /* ASIFormDataRequest+helper.m */,
 				CD3E4D4D15ADBC320059E392 /* XLNavigationBar.h */,
 				CD3E4D4E15ADBC320059E392 /* XLNavigationBar.m */,
 			);
@@ -730,7 +730,7 @@
 				CDD19DAC15989D6A006D63D0 /* Reachability.m in Sources */,
 				CD0A8E9D15A4662A001B4DD5 /* XLUserLoginController.m in Sources */,
 				CD0A8EA115A46C9D001B4DD5 /* XLTools.m in Sources */,
-				CD0A8EAA15A46EDA001B4DD5 /* ASIHTTPRequest+helper.m in Sources */,
+				CD0A8EAA15A46EDA001B4DD5 /* ASIFormDataRequest+helper.m in Sources */,
 				CDA2B7A315AC732C00CC1815 /* MBProgressHUD.m in Sources */,
 				CD3E4D4F15ADBC320059E392 /* XLNavigationBar.m in Sources */,
 				CD3E4D5D15ADD6E50059E392 /* NSObject+SBJSON.m in Sources */,
@@ -822,6 +822,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voucher/Voucher-Prefix.pch";
 				INFOPLIST_FILE = "Voucher/Voucher-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -833,6 +837,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voucher/Voucher-Prefix.pch";
 				INFOPLIST_FILE = "Voucher/Voucher-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

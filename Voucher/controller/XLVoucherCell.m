@@ -14,6 +14,8 @@
 @synthesize noLabel = _noLabel;
 @synthesize dateLabel = _dateLabel;
 @synthesize purchaseBtn = _purchaseBtn;
+@synthesize delegate = _delegate;
+@synthesize index = _index;
 
 - (void)dealloc
 {
@@ -38,6 +40,23 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)pressPurchaseBtn:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(didPressPurchase:)]) {
+        [_delegate didPressPurchase:self];
+    }
+}
+
+- (void)setBought:(int)bought
+{
+    if (bought == 1) {
+        _purchaseBtn.enabled = NO;
+        [_purchaseBtn setImage:[UIImage imageNamed:@"infp_rushed.png"] forState:UIControlStateDisabled];
+    }else {
+        [_purchaseBtn setImage:[UIImage imageNamed:@"infp_rush.png"] forState:UIControlStateNormal];
+    }
 }
 
 @end

@@ -163,6 +163,9 @@
     cell.priceLabel.text = [[infoDic objectForKey:@"price"] stringValue];
     cell.noLabel.text = [infoDic objectForKey:@"vchNo"];
     cell.dateLabel.text = [infoDic objectForKey:@"endDate"];
+    cell.index = indexPath.row;
+    [cell setBought:[[infoDic objectForKey:@"isBought"] intValue]];
+    cell.delegate = self;
     return cell;
 }
 
@@ -176,6 +179,11 @@
     }else {
         return 105;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%d",indexPath.row);
 }
 
 #pragma mark - ASIHTTPRequestDelegate
@@ -220,6 +228,59 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                     message:@"请检查网络链接或联系管理员！" 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
+#pragma mark - XLVoucherCellDelegate
+- (void)didPressPurchase:(XLVoucherCell *)cell
+{
+    NSIndexPath *path = [_tableView indexPathForCell:cell];
+    NSDictionary *infoDic = [_dataArray objectAtIndex:path.row];
+    
+    NSString *urlStr = [XLTools getInterfaceByKey:@"purchase"];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
+    req.delegate = self;
+    req.requestMethod = @"POST";
+    req.userInfo = [NSDictionary dictionaryWithObject:path forKey:@"indexPath"];
+    [req setDidFinishSelector:@selector(didRequestFinish:)];
+    [req setDidFailSelector:@selector(didRequestFail:)];
+    [req setPostValue:[infoDic objectForKey:@"viid"] forKey:@"viId"];
+    [req addDefaultPostValue];
+    [req startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)didRequestFinish:(ASIHTTPRequest *)request
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    NSDictionary *infoDic = [request.responseString JSONValue];
+    NSIndexPath *path = (NSIndexPath *)[request.userInfo objectForKey:@"indexPath"];
+    XLVoucherCell *cell = (XLVoucherCell *)[_tableView cellForRowAtIndexPath:path];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:[infoDic objectForKey:@"resultInfo"]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+    if ([[infoDic objectForKey:@"info"] intValue] == 1) {
+        [cell setBought:1];
+    }
+    if ([[infoDic objectForKey:@"info"] intValue] == 0) {
+        [cell setBought:0];
+    }
+}
+
+- (void)didRequestFail:(ASIHTTPRequest *)request
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请检查网络链接或联系管理员！"
                                                    delegate:nil
                                           cancelButtonTitle:@"确定"
                                           otherButtonTitles:nil];

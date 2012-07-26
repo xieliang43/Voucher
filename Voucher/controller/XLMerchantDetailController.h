@@ -11,7 +11,7 @@
 #import "CTLoadImageOperation.h"
 
 @interface XLMerchantDetailController : UIViewController
-<UITableViewDelegate,UITableViewDataSource>
+<UITableViewDelegate,UITableViewDataSource,XLVoucherCellDelegate>
 {
     NSArray *_dataArray;
     
