@@ -14,6 +14,15 @@
 
 @implementation XLPocketController
 
+@synthesize tableView = _tableView;
+
+- (void)dealloc
+{
+    [_tableView release];
+    [_dataArray release];
+    [super dealloc];
+}
+
 - (void)setNavigationBar
 {
     UIView *naviBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -48,6 +57,20 @@
     [self setNavigationBar];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSString *urlStr = [XLTools getInterfaceByKey:@"getWallet"];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
+    req.delegate = self;
+    req.requestMethod = @"POST";
+    [req addDefaultPostValue];
+    [req startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -64,19 +87,79 @@
 //datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return [_dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
+    XLPocketCell *cell = nil;
     static NSString *cellId = @"CELLID";
-    cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    cell = (XLPocketCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellId] autorelease];
+        cell = (XLPocketCell *)[[[NSBundle mainBundle] loadNibNamed:@"XLPocketCell" 
+                                                              owner:self options:nil] lastObject];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    NSDictionary *infoDic = [_dataArray objectAtIndex:indexPath.row];
+    cell.priceLabel.text = [[infoDic objectForKey:@"price"] stringValue];
+    cell.noLabel.text = [infoDic objectForKey:@"vchNo"];
+    cell.dateLabel.text = [infoDic objectForKey:@"endDate"];
     return cell;
+}
+
+//delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 105;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%d",indexPath.row);
+}
+
+#pragma mark - ASIHTTPRequestDelegate
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    Debug(@"%@",request.responseString);
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (request.responseStatusCode == 200) {
+        NSDictionary *dic = [request.responseString JSONValue];
+        if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
+            _dataArray = [[dic objectForKey:@"info"] retain];
+            [_tableView reloadData];
+        }else {
+            Debug(@"%@",[dic objectForKey:@"resultInfo"]);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:[dic objectForKey:@"resultInfo"] 
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+    }else {
+        Debug(@"%@",request.responseStatusCode);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"服务器内部异常！" 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    Debug(@"网络链接或服务器问题！");
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请检查网络链接或联系管理员！" 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 @end

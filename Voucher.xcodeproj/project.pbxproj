@@ -47,6 +47,8 @@
 		CD8378AE15B2E18C0072A0FE /* more_yijiandakui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8378A815B2E18C0072A0FE /* more_yijiandakui@2x.png */; };
 		CD8378B015B2E4740072A0FE /* option_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8378AF15B2E4740072A0FE /* option_bg@2x.png */; };
 		CD8378B215B2E5D40072A0FE /* optionClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8378B115B2E5D40072A0FE /* optionClose@2x.png */; };
+		CD88A2DF15C4C193007AB836 /* XLPocketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88A2DE15C4C193007AB836 /* XLPocketCell.m */; };
+		CD88A2E215C4C1BF007AB836 /* XLPocketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD88A2E115C4C1BF007AB836 /* XLPocketCell.xib */; };
 		CDA2B7A315AC732C00CC1815 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */; };
 		CDA2B7A615AC75E800CC1815 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */; };
 		CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */; };
@@ -123,7 +125,7 @@
 		CD0A8E9F15A46C9D001B4DD5 /* XLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTools.h; sourceTree = "<group>"; };
 		CD0A8EA015A46C9D001B4DD5 /* XLTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTools.m; sourceTree = "<group>"; };
 		CD0A8EA215A46CEA001B4DD5 /* interface.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interface.plist; sourceTree = "<group>"; };
-		CD0A8EA815A46EDA001B4DD5 /* ASIFormDataRequest+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "ASIFormDataRequest+helper.h"; sourceTree = "<group>"; };
+		CD0A8EA815A46EDA001B4DD5 /* ASIFormDataRequest+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIFormDataRequest+helper.h"; sourceTree = "<group>"; };
 		CD0A8EA915A46EDA001B4DD5 /* ASIFormDataRequest+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIFormDataRequest+helper.m"; sourceTree = "<group>"; };
 		CD3E4D3415ADBA320059E392 /* feild_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feild_bg@2x.png"; sourceTree = "<group>"; };
 		CD3E4D3515ADBA320059E392 /* go_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go_back@2x.png"; sourceTree = "<group>"; };
@@ -170,6 +172,9 @@
 		CD8378A815B2E18C0072A0FE /* more_yijiandakui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_yijiandakui@2x.png"; sourceTree = "<group>"; };
 		CD8378AF15B2E4740072A0FE /* option_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_bg@2x.png"; sourceTree = "<group>"; };
 		CD8378B115B2E5D40072A0FE /* optionClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "optionClose@2x.png"; sourceTree = "<group>"; };
+		CD88A2DD15C4C193007AB836 /* XLPocketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPocketCell.h; sourceTree = "<group>"; };
+		CD88A2DE15C4C193007AB836 /* XLPocketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPocketCell.m; sourceTree = "<group>"; };
+		CD88A2E115C4C1BF007AB836 /* XLPocketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLPocketCell.xib; sourceTree = "<group>"; };
 		CDA2B7A115AC732B00CC1815 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -365,6 +370,9 @@
 				E08AEF3815AFCD0A00A4A0F3 /* XLPocketController.h */,
 				E08AEF3915AFCD0A00A4A0F3 /* XLPocketController.m */,
 				E08AEF3A15AFCD0A00A4A0F3 /* XLPocketController.xib */,
+				CD88A2DD15C4C193007AB836 /* XLPocketCell.h */,
+				CD88A2DE15C4C193007AB836 /* XLPocketCell.m */,
+				CD88A2E115C4C1BF007AB836 /* XLPocketCell.xib */,
 			);
 			name = voucher;
 			sourceTree = "<group>";
@@ -707,6 +715,7 @@
 				CDC5E96C15BEDF3C00C96509 /* info_vouchers.png in Resources */,
 				CDC5E96F15BEEC1500C96509 /* infp_rush@2x.png in Resources */,
 				CDC5E97015BEEC1500C96509 /* infp_rushed@2x.png in Resources */,
+				CD88A2E215C4C1BF007AB836 /* XLPocketCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +765,7 @@
 				E00F9AFD15BD43B40070A325 /* WZLoadMoreTableFooterView.m in Sources */,
 				CD687FF315BD88A9009E497C /* XLMerchantDetailController.m in Sources */,
 				E05C50BC15BE73500053C33F /* XLVoucherCell.m in Sources */,
+				CD88A2DF15C4C193007AB836 /* XLPocketCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

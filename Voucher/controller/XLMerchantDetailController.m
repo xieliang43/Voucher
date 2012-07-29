@@ -172,13 +172,7 @@
 //delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 100;
-    }else if (indexPath.section == 1) {
-        return 40;
-    }else {
-        return 105;
-    }
+    return 105;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
