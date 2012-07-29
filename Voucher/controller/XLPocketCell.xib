@@ -141,7 +141,7 @@
 								<string key="NSFrame">{{65, 30}, {148, 21}}</string>
 								<reference key="NSSuperview" ref="855832648"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="759385274"/>
+								<reference key="NSNextKeyView" ref="232976396"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -241,6 +241,17 @@
 								<reference key="IBUIFontDescription" ref="528587787"/>
 								<reference key="IBUIFont" ref="766971608"/>
 							</object>
+							<object class="IBUIImageView" id="232976396">
+								<reference key="NSNextResponder" ref="855832648"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{245, 25}, {69, 27}}</string>
+								<reference key="NSSuperview" ref="855832648"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="759385274"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
 						</array>
 						<string key="NSFrameSize">{320, 104}</string>
 						<reference key="NSSuperview" ref="851455239"/>
@@ -291,6 +302,14 @@
 					</object>
 					<int key="connectionID">14</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">flagView</string>
+						<reference key="source" ref="851455239"/>
+						<reference key="destination" ref="232976396"/>
+					</object>
+					<int key="connectionID">18</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -323,6 +342,7 @@
 							<reference ref="15822834"/>
 							<reference ref="527620858"/>
 							<reference ref="256062784"/>
+							<reference ref="232976396"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -366,6 +386,11 @@
 						<reference key="object" ref="256062784"/>
 						<reference key="parent" ref="851455239"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">17</int>
+						<reference key="object" ref="232976396"/>
+						<reference key="parent" ref="851455239"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -373,6 +398,7 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.CustomClassName">XLPocketCell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -387,7 +413,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">16</int>
+			<int key="maxID">18</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -396,6 +422,7 @@
 					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="dateLabel">UILabel</string>
+						<string key="flagView">UIImageView</string>
 						<string key="noLabel">UILabel</string>
 						<string key="priceLabel">UILabel</string>
 					</dictionary>
@@ -403,6 +430,10 @@
 						<object class="IBToOneOutletInfo" key="dateLabel">
 							<string key="name">dateLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="flagView">
+							<string key="name">flagView</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="noLabel">
 							<string key="name">noLabel</string>

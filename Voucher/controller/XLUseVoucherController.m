@@ -14,6 +14,8 @@
 
 @implementation XLUseVoucherController
 
+@synthesize viid = _viid;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -23,10 +25,42 @@
     return self;
 }
 
+- (void)setNavigationBar
+{
+    UIView *naviBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    naviBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"navi_bg.png"]];
+    [self.view addSubview:naviBar];
+    [naviBar release];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:naviBar.bounds];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = @"使用代金券";
+    [naviBar addSubview:titleLabel];
+    [titleLabel release];
+    
+    UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftItem.frame = CGRectMake(10, 6, 51, 32);
+    [leftItem setBackgroundImage:[UIImage imageNamed:@"go_back.png"] forState:UIControlStateNormal];
+    [leftItem setTitle:@"返回" forState:UIControlStateNormal];
+    leftItem.titleEdgeInsets = UIEdgeInsetsMake(0, 7, 0, 0);
+    leftItem.titleLabel.font = [UIFont systemFontOfSize:16];
+    [leftItem addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+    [naviBar addSubview:leftItem];
+}
+
+- (void)goBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setNavigationBar];
 }
 
 - (void)viewDidUnload
@@ -40,5 +74,61 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (IBAction)doUseVoucher:(id)sender
+{
+    NSString *urlStr = [XLTools getInterfaceByKey:@"useVoucher"];
+    Debug(@"%@",urlStr);
+    NSURL *url = [NSURL URLWithString:urlStr];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
+    req.delegate = self;
+    req.requestMethod = @"POST";
+    [req addDefaultPostValue];
+    [req setPostValue:[NSNumber numberWithInt:_viid] forKey:@"uvId"];
+    [req setPostValue:@"123456" forKey:@"expensePassword"];
+    [req startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+#pragma mark - ASIHTTPRequestDelegate
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    Debug(@"%@",request.responseString);
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (request.responseStatusCode == 200) {
+        NSDictionary *dic = [request.responseString JSONValue];
+        Debug(@"%@",[dic objectForKey:@"resultInfo"]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:[dic objectForKey:@"resultInfo"] 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }else {
+        Debug(@"%@",request.responseStatusCode);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"服务器内部异常！" 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    Debug(@"网络链接或服务器问题！");
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请检查网络链接或联系管理员！" 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
 
 @end

@@ -103,6 +103,13 @@
     cell.priceLabel.text = [[infoDic objectForKey:@"price"] stringValue];
     cell.noLabel.text = [infoDic objectForKey:@"vchNo"];
     cell.dateLabel.text = [infoDic objectForKey:@"endDate"];
+    if ([[infoDic objectForKey:@"isUsed"] intValue] == 1) {
+        cell.flagView.image = [UIImage imageNamed:@"poket_uesed.png"];
+    }else if ([[infoDic objectForKey:@"isActive"] intValue] == 0) {
+        cell.flagView.image = [UIImage imageNamed:@"poket_guoqi.png"];
+    }else {
+        cell.flagView.image = [UIImage imageNamed:@"poket_ues.png"];
+    }
     return cell;
 }
 
@@ -115,6 +122,30 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%d",indexPath.row);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *infoDic = [_dataArray objectAtIndex:indexPath.row];
+    if ([[infoDic objectForKey:@"isUsed"] intValue] == 1) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"该代金券已经被使用！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }else if ([[infoDic objectForKey:@"isActive"] intValue] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"该代金券已经过期！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }else {
+        XLUseVoucherController *useVoucher = [[XLUseVoucherController alloc] initWithNibName:nil bundle:nil];
+        useVoucher.viid = [[infoDic objectForKey:@"viId"] intValue];
+        [self.navigationController pushViewController:useVoucher animated:YES];
+        [useVoucher release];
+    }
 }
 
 #pragma mark - ASIHTTPRequestDelegate

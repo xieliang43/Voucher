@@ -28,5 +28,7 @@
 	<string>purchaseAction!purchase.action</string>
 	<key>getWallet</key>
 	<string>walletAction!getWallet.action</string>
+	<key>useVoucher</key>
+	<string>walletAction!useWallet.action</string>
 </dict>
 </plist>

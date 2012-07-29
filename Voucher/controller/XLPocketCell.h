@@ -13,5 +13,6 @@
 @property (nonatomic,retain) IBOutlet UILabel *priceLabel;
 @property (nonatomic,retain) IBOutlet UILabel *noLabel;
 @property (nonatomic,retain) IBOutlet UILabel *dateLabel;
+@property (nonatomic,retain) IBOutlet UIImageView *flagView;
 
 @end

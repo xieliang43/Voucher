@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XLPocketCell.h"
+#import "XLUseVoucherController.h"
 
 @interface XLPocketController : UIViewController
 <UITableViewDelegate,UITableViewDataSource>

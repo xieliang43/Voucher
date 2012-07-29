@@ -10,4 +10,8 @@
 
 @interface XLUseVoucherController : UIViewController
 
+@property (nonatomic,assign) NSInteger viid;
+
+- (IBAction)doUseVoucher:(id)sender;
+
 @end
