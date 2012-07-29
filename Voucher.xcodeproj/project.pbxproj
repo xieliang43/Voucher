@@ -49,6 +49,8 @@
 		CD8378B215B2E5D40072A0FE /* optionClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8378B115B2E5D40072A0FE /* optionClose@2x.png */; };
 		CD88A2DF15C4C193007AB836 /* XLPocketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88A2DE15C4C193007AB836 /* XLPocketCell.m */; };
 		CD88A2E215C4C1BF007AB836 /* XLPocketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD88A2E115C4C1BF007AB836 /* XLPocketCell.xib */; };
+		CD88A2E615C53D2F007AB836 /* XLUseVoucherController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD88A2E415C53D2F007AB836 /* XLUseVoucherController.m */; };
+		CD88A2E715C53D2F007AB836 /* XLUseVoucherController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD88A2E515C53D2F007AB836 /* XLUseVoucherController.xib */; };
 		CDA2B7A315AC732C00CC1815 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */; };
 		CDA2B7A615AC75E800CC1815 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */; };
 		CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */; };
@@ -175,6 +177,9 @@
 		CD88A2DD15C4C193007AB836 /* XLPocketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPocketCell.h; sourceTree = "<group>"; };
 		CD88A2DE15C4C193007AB836 /* XLPocketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPocketCell.m; sourceTree = "<group>"; };
 		CD88A2E115C4C1BF007AB836 /* XLPocketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLPocketCell.xib; sourceTree = "<group>"; };
+		CD88A2E315C53D2D007AB836 /* XLUseVoucherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLUseVoucherController.h; sourceTree = "<group>"; };
+		CD88A2E415C53D2F007AB836 /* XLUseVoucherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLUseVoucherController.m; sourceTree = "<group>"; };
+		CD88A2E515C53D2F007AB836 /* XLUseVoucherController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLUseVoucherController.xib; sourceTree = "<group>"; };
 		CDA2B7A115AC732B00CC1815 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -373,6 +378,9 @@
 				CD88A2DD15C4C193007AB836 /* XLPocketCell.h */,
 				CD88A2DE15C4C193007AB836 /* XLPocketCell.m */,
 				CD88A2E115C4C1BF007AB836 /* XLPocketCell.xib */,
+				CD88A2E315C53D2D007AB836 /* XLUseVoucherController.h */,
+				CD88A2E415C53D2F007AB836 /* XLUseVoucherController.m */,
+				CD88A2E515C53D2F007AB836 /* XLUseVoucherController.xib */,
 			);
 			name = voucher;
 			sourceTree = "<group>";
@@ -716,6 +724,7 @@
 				CDC5E96F15BEEC1500C96509 /* infp_rush@2x.png in Resources */,
 				CDC5E97015BEEC1500C96509 /* infp_rushed@2x.png in Resources */,
 				CD88A2E215C4C1BF007AB836 /* XLPocketCell.xib in Resources */,
+				CD88A2E715C53D2F007AB836 /* XLUseVoucherController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +775,7 @@
 				CD687FF315BD88A9009E497C /* XLMerchantDetailController.m in Sources */,
 				E05C50BC15BE73500053C33F /* XLVoucherCell.m in Sources */,
 				CD88A2DF15C4C193007AB836 /* XLPocketCell.m in Sources */,
+				CD88A2E615C53D2F007AB836 /* XLUseVoucherController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
