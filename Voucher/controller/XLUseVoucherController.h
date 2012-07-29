@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface XLUseVoucherController : UIViewController
+{
+    UITextField *_usePassField;
+}
 
 @property (nonatomic,assign) NSInteger viid;
 

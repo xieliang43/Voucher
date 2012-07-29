@@ -61,6 +61,8 @@
 {
     [super viewDidAppear:animated];
     
+    [self.myTabController displayMyTabBar];
+    
     NSString *urlStr = [XLTools getInterfaceByKey:@"getWallet"];
     NSURL *url = [NSURL URLWithString:urlStr];
     ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
@@ -141,6 +143,7 @@
         [alert show];
         [alert release];
     }else {
+        [self.myTabController hideMyTabBar];
         XLUseVoucherController *useVoucher = [[XLUseVoucherController alloc] initWithNibName:nil bundle:nil];
         useVoucher.viid = [[infoDic objectForKey:@"viId"] intValue];
         [self.navigationController pushViewController:useVoucher animated:YES];

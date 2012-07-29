@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XLSuperController.h"
 #import "XLPocketCell.h"
 #import "XLUseVoucherController.h"
 
-@interface XLPocketController : UIViewController
+@interface XLPocketController : XLSuperController
 <UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *_dataArray;

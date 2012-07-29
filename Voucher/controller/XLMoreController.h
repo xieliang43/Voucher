@@ -14,12 +14,12 @@
 #import "XLAdviseController.h"
 #import "XLAboutMeController.h"
 
-@class XLTabBarController;
+@class XLTabController;
 
 @interface XLMoreController : UIViewController
 <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,assign) XLTabBarController *tabController;
+@property (nonatomic,assign) XLTabController *tabController;
 @property (nonatomic,retain) IBOutlet UITableView *tableView;
 
 @end

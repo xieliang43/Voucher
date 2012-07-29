@@ -1,5 +1,5 @@
 //
-//  XLTabBarController.m
+//  XLTabController.m
 //  Voucher
 //
 //  Created by xie liang on 7/13/12.
@@ -8,11 +8,11 @@
 
 #import "XLTabBarController.h"
 
-@interface XLTabBarController ()
+@interface XLTabController ()
 
 @end
 
-@implementation XLTabBarController
+@implementation XLTabController
 
 @synthesize controllers = _controllers;
 
@@ -126,6 +126,30 @@
     UIView *v = controller.view;
     v.frame = _containerView.bounds;
     [_containerView addSubview:v];
+}
+
+- (void)hideMyTabBar
+{
+    CGRect frame = _containerView.frame;
+    frame.size.height = 460;
+    _containerView.frame = frame;
+    [UIView beginAnimations:@"HIDE_TABBAR" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+    [UIView setAnimationDuration:0.2];
+    _tabBar.hidden = YES;
+    [UIView commitAnimations];
+}
+
+- (void)displayMyTabBar
+{
+    CGRect frame = _containerView.frame;
+    frame.size.height = 416;
+    _containerView.frame = frame;
+    [UIView beginAnimations:@"DISPLAY_TABBAR" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+    [UIView setAnimationDuration:0.2];
+    _tabBar.hidden = NO;
+    [UIView commitAnimations];
 }
 
 @end

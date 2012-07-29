@@ -32,7 +32,10 @@
 
 - (void)setTabBarAsRoot
 {
+    XLTabController *tabBarController = [[XLTabController alloc] initWithNibName:nil bundle:nil];
+    
     XLPocketController *pocketController = [[XLPocketController alloc] initWithNibName:nil bundle:nil];
+    pocketController.myTabController = tabBarController;
     UINavigationController *pocketNavi = [[UINavigationController alloc] initWithRootViewController:pocketController];
     pocketNavi.navigationBarHidden = YES;
     
@@ -46,7 +49,6 @@
     
     NSArray *controllers = [NSArray arrayWithObjects:pocketNavi,merNavi,moreNavi,nil];
     
-    XLTabBarController *tabBarController = [[XLTabBarController alloc] initWithNibName:nil bundle:nil];
     tabBarController.controllers = controllers;
     _window.rootViewController = tabBarController;
     

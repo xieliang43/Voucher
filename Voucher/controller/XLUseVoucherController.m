@@ -16,11 +16,22 @@
 
 @synthesize viid = _viid;
 
+- (void)dealloc
+{
+    [_usePassField release];
+    [super dealloc];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _usePassField = [[UITextField alloc] initWithFrame:CGRectMake(20, 50, 245, 37)];
+        _usePassField.secureTextEntry = YES;
+        _usePassField.placeholder = @"使用密码";
+        _usePassField.borderStyle = UITextBorderStyleRoundedRect;
+        _usePassField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     }
     return self;
 }
@@ -77,17 +88,33 @@
 
 - (IBAction)doUseVoucher:(id)sender
 {
-    NSString *urlStr = [XLTools getInterfaceByKey:@"useVoucher"];
-    Debug(@"%@",urlStr);
-    NSURL *url = [NSURL URLWithString:urlStr];
-    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
-    req.delegate = self;
-    req.requestMethod = @"POST";
-    [req addDefaultPostValue];
-    [req setPostValue:[NSNumber numberWithInt:_viid] forKey:@"uvId"];
-    [req setPostValue:@"123456" forKey:@"expensePassword"];
-    [req startAsynchronous];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入使用密码" 
+                                                    message:@"\n\n" 
+                                                   delegate:self 
+                                          cancelButtonTitle:@"取消"
+                                          otherButtonTitles:@"确定", nil];
+    [alert addSubview:_usePassField];
+    [_usePassField becomeFirstResponder];
+    [alert show];
+    [alert release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [_usePassField resignFirstResponder];
+    if (buttonIndex == 1) {
+        NSString *urlStr = [XLTools getInterfaceByKey:@"useVoucher"];
+        Debug(@"%@",urlStr);
+        NSURL *url = [NSURL URLWithString:urlStr];
+        ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
+        req.delegate = self;
+        req.requestMethod = @"POST";
+        [req addDefaultPostValue];
+        [req setPostValue:[NSNumber numberWithInt:_viid] forKey:@"uvId"];
+        [req setPostValue:_usePassField.text forKey:@"expensePassword"];
+        [req startAsynchronous];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
 }
 
 #pragma mark - ASIHTTPRequestDelegate

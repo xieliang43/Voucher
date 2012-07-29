@@ -1,5 +1,5 @@
 //
-//  XLTabBarController.h
+//  XLTabController.h
 //  Voucher
 //
 //  Created by xie liang on 7/13/12.
@@ -10,7 +10,7 @@
 #import "XLTabBarItem.h"
 #import "XLMoreController.h"
 
-@interface XLTabBarController : UIViewController<XLTabBarItemDelegate>
+@interface XLTabController : UIViewController<XLTabBarItemDelegate>
 {
     NSArray *_controllers;
     UIView *_tabBar;
@@ -25,5 +25,8 @@
 }
 
 @property (nonatomic,retain,setter = setControllers:) NSArray *controllers;
+
+- (void)hideMyTabBar;
+- (void)displayMyTabBar;
 
 @end
