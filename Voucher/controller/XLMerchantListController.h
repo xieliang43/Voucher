@@ -22,7 +22,7 @@ XLOptionSelectorDelegate,WZRefreshTableHeaderDelegate,WZLoadMoreTableFooterDeleg
     NSString *_distance;
     NSString *_area;
     
-    NSArray *_dataArray;
+    NSMutableArray *_dataArray;
     
     NSInteger start;
     NSInteger limit;
@@ -33,6 +33,8 @@ XLOptionSelectorDelegate,WZRefreshTableHeaderDelegate,WZLoadMoreTableFooterDeleg
     BOOL _reloading;
     
     NSOperationQueue *_queue;
+    
+    NSInteger _total;
 }
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;

@@ -33,6 +33,9 @@
     
     [_queue release];
     
+    [_refreshHeaderView release];
+    [_loadMoreFooterView release];
+    
     [super dealloc];
 }
 
@@ -111,17 +114,28 @@
     [req3 setPostValue:[[XLTools getCityInfo] objectForKey:@"id"] forKey:@"cityId"];
     [req3 startAsynchronous];
     
+    _dataArray = [[NSMutableArray array] retain];
     [self doSearch:nil]; 
     
     if (_refreshHeaderView == nil) {
 		_refreshHeaderView = [[WZRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
 		_refreshHeaderView.delegate = self;
 		[self.tableView addSubview:_refreshHeaderView];
-		_refreshHeaderView = _refreshHeaderView;
-		[_refreshHeaderView release];
 	}
-	
 	[_refreshHeaderView refreshLastUpdatedDate];
+    
+}
+
+- (void)showLoadMoreFooterView
+{
+    if (_total > [_dataArray count]) {
+        if (_loadMoreFooterView == nil) {
+            _loadMoreFooterView = [[WZLoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, self.tableView.contentSize.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+            _loadMoreFooterView.delegate = self;
+            [self.tableView addSubview:_loadMoreFooterView];
+        }
+        [_loadMoreFooterView loadmoreLastUpdatedDate];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -309,12 +323,14 @@
     if (request.responseStatusCode == 200) {
         NSDictionary *dic = [request.responseString JSONValue];
         if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
-            if (_dataArray) {
-                [_dataArray release];
-                _dataArray = nil;
+            NSArray *tmpArray = [[dic objectForKey:@"info"] objectForKey:@"shops"];
+            if (start == 0) {
+                [_dataArray removeAllObjects];
             }
-            _dataArray = [[[dic objectForKey:@"info"] objectForKey:@"shops"] retain];
+            [_dataArray addObjectsFromArray:tmpArray];
             [_tableView reloadData];
+            _total = [[[dic objectForKey:@"info"] objectForKey:@"total"] intValue];
+            [self showLoadMoreFooterView];
         }else {
             Debug(@"%@",[dic objectForKey:@"resultInfo"]);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
@@ -386,10 +402,24 @@
 	
 }
 
+- (void)loadMoreTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;
+	
+}
+
+- (void)doneLoadMoreTableViewData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_loadMoreFooterView wzLoadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+	
+}
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate Methods
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
 	
 	[_refreshHeaderView wzRefreshScrollViewDidScroll:scrollView];
@@ -422,6 +452,23 @@
 	
 	return [NSDate date]; // should return date data source was last changed
 	
+}
+
+#pragma mark -
+#pragma mark WZLoadMoreTableFooterDelegate Methods
+- (void)wzLoadMoreTableHeaderDidTriggerRefresh:(WZLoadMoreTableFooterView*)view {
+    
+	[self loadMoreTableViewDataSource];
+	start += 1;
+    [self doSearch:nil];
+}
+
+- (BOOL)wzLoadMoreTableHeaderDataSourceIsLoading:(WZLoadMoreTableFooterView*)view {
+    return _reloading;
+}
+
+- (NSDate*)wzLoadMoreTableHeaderDataSourceLastUpdated:(WZLoadMoreTableFooterView*)view {
+    return [NSDate date]; // should return date data source was last changed
 }
 
 @end
