@@ -14,10 +14,15 @@
 
 @implementation XLUseVoucherController
 
-@synthesize viid = _viid;
+@synthesize voucher = _voucher;
+@synthesize imageView = _imageView;
+@synthesize descView = _descView;
 
 - (void)dealloc
 {
+    [_imageView release];
+    [_descView release];
+    [_voucher release];
     [_usePassField release];
     [super dealloc];
 }
@@ -72,6 +77,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBar];
+    NSString *imageUrlStr = [_voucher objectForKey:@"image"];
+    _imageView.image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
+    _descView.text = [_voucher objectForKey:@"useRule"];
 }
 
 - (void)viewDidUnload
@@ -110,7 +118,7 @@
         req.delegate = self;
         req.requestMethod = @"POST";
         [req addDefaultPostValue];
-        [req setPostValue:[NSNumber numberWithInt:_viid] forKey:@"uvId"];
+        [req setPostValue:[_voucher objectForKey:@"viId"] forKey:@"uvId"];
         [req setPostValue:_usePassField.text forKey:@"expensePassword"];
         [req startAsynchronous];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
