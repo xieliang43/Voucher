@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "XLVoucherCell.h"
 #import "CTLoadImageOperation.h"
+#import "XLSinaEngine.h"
 
 @interface XLMerchantDetailController : UIViewController
-<UITableViewDelegate,UITableViewDataSource,XLVoucherCellDelegate>
+<UITableViewDelegate,UITableViewDataSource,XLVoucherCellDelegate,XLSinaEngineDelegate>
 {
     NSArray *_dataArray;
     
     NSOperationQueue *_queue;
+    
+    XLSinaEngine *_sinaEngine;
 }
 
 @property(nonatomic,retain) IBOutlet UITableView *tableView;
@@ -26,5 +29,7 @@
 @property(nonatomic,retain) IBOutlet UIButton *phoneBtn;
 @property(nonatomic,retain) IBOutlet UIButton *descbtn;
 @property(nonatomic,retain) IBOutlet UILabel *numLabel;
+
+- (IBAction)shareToSina:(id)sender;
 
 @end

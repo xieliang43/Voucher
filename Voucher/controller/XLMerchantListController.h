@@ -35,6 +35,8 @@ XLOptionSelectorDelegate,WZRefreshTableHeaderDelegate,WZLoadMoreTableFooterDeleg
     NSOperationQueue *_queue;
     
     NSInteger _total;
+    
+    NSString *_keyWord;
 }
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;

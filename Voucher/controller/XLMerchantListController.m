@@ -36,6 +36,8 @@
     [_refreshHeaderView release];
     [_loadMoreFooterView release];
     
+    [_keyWord release];
+    
     [super dealloc];
 }
 
@@ -60,7 +62,7 @@
     searchField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     searchField.font = [UIFont systemFontOfSize:16];
     searchField.returnKeyType = UIReturnKeySearch;
-    [searchField addTarget:self action:@selector(doSearch:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [searchField addTarget:self action:@selector(willSearch:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [naviBar addSubview:searchField];
     [searchField release];
     
@@ -115,7 +117,7 @@
     [req3 startAsynchronous];
     
     _dataArray = [[NSMutableArray array] retain];
-    [self doSearch:nil]; 
+    [self doSearch]; 
     
     if (_refreshHeaderView == nil) {
 		_refreshHeaderView = [[WZRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
@@ -130,11 +132,18 @@
 {
     if (_total > [_dataArray count]) {
         if (_loadMoreFooterView == nil) {
-            _loadMoreFooterView = [[WZLoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, self.tableView.contentSize.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+            _loadMoreFooterView = [[WZLoadMoreTableFooterView alloc] init];
             _loadMoreFooterView.delegate = self;
             [self.tableView addSubview:_loadMoreFooterView];
         }
+        _loadMoreFooterView.frame = CGRectMake(0.0f, self.tableView.contentSize.height, self.view.frame.size.width, self.tableView.bounds.size.height);
         [_loadMoreFooterView loadmoreLastUpdatedDate];
+    }else {
+        if (_loadMoreFooterView) {
+            [_loadMoreFooterView removeFromSuperview];
+            [_loadMoreFooterView release];
+            _loadMoreFooterView = nil;
+        }
     }
 }
 
@@ -181,9 +190,15 @@
     [selector release];
 }
 
-- (void)doSearch:(UITextField *)feild
+- (void)willSearch:(UITextField *)feild
 {
-    Debug(@"%@",feild.text);
+    start = 0;
+    _keyWord = [feild.text retain];
+    [self doSearch];
+}
+
+- (void)doSearch
+{
     NSString *urlStr = [XLTools getInterfaceByKey:@"get_shops"];
     Debug(@"%@",urlStr);
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -201,7 +216,7 @@
     Debug(@"%@",[[XLTools userLocation] objectForKey:@"longitude"]);
     [req setPostValue:[[XLTools userLocation] objectForKey:@"latitude"] forKey:@"latitude"];
     Debug(@"%@",[[XLTools userLocation] objectForKey:@"latitude"]);
-    [req setPostValue:feild.text forKey:@"keyword"];
+    [req setPostValue:_keyWord forKey:@"keyword"];
     [req setPostValue:[[XLTools getCityInfo] objectForKey:@"id"] forKey:@"cityId"];
     [req startAsynchronous];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -320,6 +335,7 @@
     Debug(@"%@",request.responseString);
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self doneLoadingTableViewData];
+    [self doneLoadMoreTableViewData];
     if (request.responseStatusCode == 200) {
         NSDictionary *dic = [request.responseString JSONValue];
         if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
@@ -380,7 +396,8 @@
         _merchantType = [[NSString stringWithFormat:@"%d",oid] retain];
         [_merchantTypeBtn setTitle:obj forState:UIControlStateNormal];
     }
-    [self doSearch:nil];
+    start = 0;
+    [self doSearch];
 }
 
 #pragma mark -
@@ -423,13 +440,13 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
 	
 	[_refreshHeaderView wzRefreshScrollViewDidScroll:scrollView];
-    
+    [_loadMoreFooterView wzLoadMoreScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 	
 	[_refreshHeaderView wzRefreshScrollViewDidEndDragging:scrollView];
-	
+	[_loadMoreFooterView wzLoadMoreScrollViewDidEndDragging:scrollView];
 }
 
 #pragma mark -
@@ -439,7 +456,7 @@
 	
 	[self reloadTableViewDataSource];
     start = 0;
-	[self doSearch:nil];
+	[self doSearch];
 }
 
 - (BOOL)wzRefreshTableHeaderDataSourceIsLoading:(WZRefreshTableHeaderView*)view{
@@ -460,7 +477,7 @@
     
 	[self loadMoreTableViewDataSource];
 	start += 1;
-    [self doSearch:nil];
+    [self doSearch];
 }
 
 - (BOOL)wzLoadMoreTableHeaderDataSourceIsLoading:(WZLoadMoreTableFooterView*)view {

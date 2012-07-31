@@ -37,6 +37,8 @@
     
     [_queue release];
     
+    [_sinaEngine release];
+    
     [super dealloc];
 }
 
@@ -47,6 +49,10 @@
         // Custom initialization
         _queue = [[NSOperationQueue alloc] init];
         [_queue setMaxConcurrentOperationCount:2];
+        
+        _sinaEngine = [[XLSinaEngine alloc] init];
+        _sinaEngine.delegate = self;
+        _sinaEngine.rootViewController = self;
     }
     return self;
 }
@@ -110,6 +116,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)shareToSina:(id)sender
+{
+    [_sinaEngine loginSina];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -243,7 +254,7 @@
     req.userInfo = [NSDictionary dictionaryWithObject:path forKey:@"indexPath"];
     [req setDidFinishSelector:@selector(didRequestFinish:)];
     [req setDidFailSelector:@selector(didRequestFail:)];
-    [req setPostValue:[infoDic objectForKey:@"viid"] forKey:@"viId"];
+    [req setPostValue:[infoDic objectForKey:@"viId"] forKey:@"viId"];
     [req addDefaultPostValue];
     [req startAsynchronous];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -275,6 +286,23 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                     message:@"请检查网络链接或联系管理员！"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
+#pragma mark - XLSinaEngineDelegate
+- (void)didLoginSina
+{
+    [_sinaEngine sendStatus:@"asfsdfasdfadfas"];
+}
+
+- (void)didFialdLoginSina
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"登陆新浪微博失败！"
                                                    delegate:nil
                                           cancelButtonTitle:@"确定"
                                           otherButtonTitles:nil];

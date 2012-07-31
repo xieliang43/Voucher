@@ -96,6 +96,9 @@
 		CDD19DB315989DBE006D63D0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD19DB215989DBE006D63D0 /* SystemConfiguration.framework */; };
 		CDD19DB515989DD3006D63D0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD19DB415989DD3006D63D0 /* MobileCoreServices.framework */; };
 		CDD19DB715989DDB006D63D0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD19DB615989DDB006D63D0 /* libz.dylib */; };
+		CDDCBF4315C6CAB4009F7ECC /* XLSinaAuthorizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDCBF4015C6CAB4009F7ECC /* XLSinaAuthorizeController.m */; };
+		CDDCBF4415C6CAB4009F7ECC /* XLSinaEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDCBF4215C6CAB4009F7ECC /* XLSinaEngine.m */; };
+		CDDCBF4715C6CBCD009F7ECC /* info_sina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDDCBF4615C6CBCD009F7ECC /* info_sina@2x.png */; };
 		CDE9A8F715AEFFCD00229991 /* XLRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE9A8F515AEFFCD00229991 /* XLRegisterController.m */; };
 		CDE9A8F815AEFFCD00229991 /* XLRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE9A8F615AEFFCD00229991 /* XLRegisterController.xib */; };
 		E00F9AE115BCDFD30070A325 /* XLAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00F9ADF15BCDFD30070A325 /* XLAboutMeController.m */; };
@@ -254,6 +257,11 @@
 		CDD19DB215989DBE006D63D0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CDD19DB415989DD3006D63D0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CDD19DB615989DDB006D63D0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CDDCBF3F15C6CAB4009F7ECC /* XLSinaAuthorizeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSinaAuthorizeController.h; sourceTree = "<group>"; };
+		CDDCBF4015C6CAB4009F7ECC /* XLSinaAuthorizeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSinaAuthorizeController.m; sourceTree = "<group>"; };
+		CDDCBF4115C6CAB4009F7ECC /* XLSinaEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSinaEngine.h; sourceTree = "<group>"; };
+		CDDCBF4215C6CAB4009F7ECC /* XLSinaEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSinaEngine.m; sourceTree = "<group>"; };
+		CDDCBF4615C6CBCD009F7ECC /* info_sina@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info_sina@2x.png"; sourceTree = "<group>"; };
 		CDE9A8F415AEFFCD00229991 /* XLRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLRegisterController.h; sourceTree = "<group>"; };
 		CDE9A8F515AEFFCD00229991 /* XLRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLRegisterController.m; sourceTree = "<group>"; };
 		CDE9A8F615AEFFCD00229991 /* XLRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLRegisterController.xib; sourceTree = "<group>"; };
@@ -404,6 +412,7 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				CDDCBF4615C6CBCD009F7ECC /* info_sina@2x.png */,
 				CD88A2EE15C57250007AB836 /* useyouhuiquan_bg@2x.png */,
 				CD88A2E815C56B1F007AB836 /* poket_guoqi@2x.png */,
 				CD88A2E915C56B1F007AB836 /* poket_ues@2x.png */,
@@ -586,6 +595,10 @@
 		CDD19DD21598B79E006D63D0 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				CDDCBF3F15C6CAB4009F7ECC /* XLSinaAuthorizeController.h */,
+				CDDCBF4015C6CAB4009F7ECC /* XLSinaAuthorizeController.m */,
+				CDDCBF4115C6CAB4009F7ECC /* XLSinaEngine.h */,
+				CDDCBF4215C6CAB4009F7ECC /* XLSinaEngine.m */,
 				CD0A8E9F15A46C9D001B4DD5 /* XLTools.h */,
 				CD0A8EA015A46C9D001B4DD5 /* XLTools.m */,
 				CD0A8EA815A46EDA001B4DD5 /* ASIFormDataRequest+helper.h */,
@@ -750,6 +763,7 @@
 				CD88A2ED15C56B1F007AB836 /* poket_uesed@2x.png in Resources */,
 				CD88A2EF15C57251007AB836 /* useyouhuiquan_bg@2x.png in Resources */,
 				CD88A2F415C57A1B007AB836 /* XLSuperController.xib in Resources */,
+				CDDCBF4715C6CBCD009F7ECC /* info_sina@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +816,8 @@
 				CD88A2DF15C4C193007AB836 /* XLPocketCell.m in Sources */,
 				CD88A2E615C53D2F007AB836 /* XLUseVoucherController.m in Sources */,
 				CD88A2F315C57A1B007AB836 /* XLSuperController.m in Sources */,
+				CDDCBF4315C6CAB4009F7ECC /* XLSinaAuthorizeController.m in Sources */,
+				CDDCBF4415C6CAB4009F7ECC /* XLSinaEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
