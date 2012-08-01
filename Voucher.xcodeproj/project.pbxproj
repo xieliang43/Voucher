@@ -111,6 +111,8 @@
 		E00F9B0615BD43C80070A325 /* blueArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F9B0215BD43C80070A325 /* blueArrowUp@2x.png */; };
 		E03AD9DE15AFB23C00B70C12 /* XLTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9DD15AFB23C00B70C12 /* XLTabBarItem.m */; };
 		E03AD9E215AFB35400B70C12 /* XLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9E115AFB35400B70C12 /* XLTabBarController.m */; };
+		E046983B15C904E1008C37B8 /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983A15C904E1008C37B8 /* 57.png */; };
+		E046983E15C904E8008C37B8 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983D15C904E8008C37B8 /* 114.png */; };
 		E05C50BC15BE73500053C33F /* XLVoucherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E05C50BB15BE73500053C33F /* XLVoucherCell.m */; };
 		E05C50C215BE73B30053C33F /* XLVoucherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E05C50C115BE73B30053C33F /* XLVoucherCell.xib */; };
 		E064C97415B0008B0051E143 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E064C97215B0008B0051E143 /* search_bg@2x.png */; };
@@ -280,6 +282,8 @@
 		E03AD9DD15AFB23C00B70C12 /* XLTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTabBarItem.m; sourceTree = "<group>"; };
 		E03AD9E015AFB35400B70C12 /* XLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTabBarController.h; sourceTree = "<group>"; };
 		E03AD9E115AFB35400B70C12 /* XLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTabBarController.m; sourceTree = "<group>"; };
+		E046983A15C904E1008C37B8 /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../../57.png; sourceTree = "<group>"; };
+		E046983D15C904E8008C37B8 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../../114.png; sourceTree = "<group>"; };
 		E05C50BA15BE73500053C33F /* XLVoucherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLVoucherCell.h; sourceTree = "<group>"; };
 		E05C50BB15BE73500053C33F /* XLVoucherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLVoucherCell.m; sourceTree = "<group>"; };
 		E05C50C115BE73B30053C33F /* XLVoucherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLVoucherCell.xib; sourceTree = "<group>"; };
@@ -412,6 +416,8 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				E046983D15C904E8008C37B8 /* 114.png */,
+				E046983A15C904E1008C37B8 /* 57.png */,
 				CDDCBF4615C6CBCD009F7ECC /* info_sina@2x.png */,
 				CD88A2EE15C57250007AB836 /* useyouhuiquan_bg@2x.png */,
 				CD88A2E815C56B1F007AB836 /* poket_guoqi@2x.png */,
@@ -764,6 +770,8 @@
 				CD88A2EF15C57251007AB836 /* useyouhuiquan_bg@2x.png in Resources */,
 				CD88A2F415C57A1B007AB836 /* XLSuperController.xib in Resources */,
 				CDDCBF4715C6CBCD009F7ECC /* info_sina@2x.png in Resources */,
+				E046983B15C904E1008C37B8 /* 57.png in Resources */,
+				E046983E15C904E8008C37B8 /* 114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +892,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voucher/Voucher-Prefix.pch";
 				INFOPLIST_FILE = "Voucher/Voucher-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -899,6 +908,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voucher/Voucher-Prefix.pch";
 				INFOPLIST_FILE = "Voucher/Voucher-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
