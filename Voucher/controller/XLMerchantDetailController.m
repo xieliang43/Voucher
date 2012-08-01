@@ -19,9 +19,9 @@
 @synthesize logoView = _logoView;
 @synthesize nameLabel = _nameLabel;
 @synthesize addressLabel = _addressLabel;
-@synthesize phoneBtn = _phoneBtn;
-@synthesize descbtn = _descbtn;
 @synthesize numLabel = _numLabel;
+@synthesize phoneLabel = _phoneLabel;
+@synthesize descLabel = _descLabel;
 
 - (void)dealloc
 {
@@ -31,9 +31,9 @@
     [_logoView release];
     [_nameLabel release];
     [_addressLabel release];
-    [_phoneBtn release];
-    [_descbtn release];
     [_numLabel release];
+    [_phoneLabel release];
+    [_descLabel release];
     
     [_queue release];
     
@@ -95,6 +95,28 @@
     
     [self setNavigationBar];
     
+    _phoneLabel.text = [NSString stringWithFormat:@"电话：%@",[_merchantInfo objectForKey:@"telNo"]];
+    [_phoneLabel addTarget:self action:@selector(makeCall)];
+    _descLabel.text = @"商家简介";
+    [_descLabel addTarget:self action:@selector(displayDescription)];
+    
+    _nameLabel.text = [_merchantInfo objectForKey:@"shopName"];
+    _addressLabel.text = [_merchantInfo objectForKey:@"shopAddress"];
+    
+    NSString *imageUrlStr = [_merchantInfo objectForKey:@"image"];
+    UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
+    if (image) {
+        _logoView.image = image;
+    } else {
+        NSURL *url = [NSURL URLWithString:imageUrlStr];
+        CTLoadImageOperation *operation = [[CTLoadImageOperation alloc] initWithUrl:url
+                                                                             target:self
+                                                                             action:@selector(didLoadImage:) 
+                                                                          indexPath:nil];
+        [_queue addOperation:operation];
+        [operation release];
+    }
+    
     NSString *urlStr = [XLTools getInterfaceByKey:@"get_vouchers"];
     Debug(@"%@",urlStr);
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -125,22 +147,19 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _nameLabel.text = [_merchantInfo objectForKey:@"shopName"];
-    _addressLabel.text = [_merchantInfo objectForKey:@"shopAddress"];
     
-    NSString *imageUrlStr = [_merchantInfo objectForKey:@"image"];
-    UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
-    if (image) {
-        _logoView.image = image;
-    } else {
-        NSURL *url = [NSURL URLWithString:imageUrlStr];
-        CTLoadImageOperation *operation = [[CTLoadImageOperation alloc] initWithUrl:url
-                                                                             target:self
-                                                                             action:@selector(didLoadImage:) 
-                                                                          indexPath:nil];
-        [_queue addOperation:operation];
-        [operation release];
-    }
+}
+
+- (void)makeCall
+{
+    Debug(@"call label");
+    NSString *urlStr = [NSString stringWithFormat:@"tel:%@",[_merchantInfo objectForKey:@"telNo"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+}
+
+- (void)displayDescription
+{
+    NSLog(@"desc");
 }
 
 #pragma mark - NSOperation 回调

@@ -10,6 +10,7 @@
 #import "XLVoucherCell.h"
 #import "CTLoadImageOperation.h"
 #import "XLSinaEngine.h"
+#import "XLTouchLabel.h"
 
 @interface XLMerchantDetailController : UIViewController
 <UITableViewDelegate,UITableViewDataSource,XLVoucherCellDelegate,XLSinaEngineDelegate>
@@ -26,9 +27,9 @@
 @property(nonatomic,retain) IBOutlet UIImageView *logoView;
 @property(nonatomic,retain) IBOutlet UILabel *nameLabel;
 @property(nonatomic,retain) IBOutlet UILabel *addressLabel;
-@property(nonatomic,retain) IBOutlet UIButton *phoneBtn;
-@property(nonatomic,retain) IBOutlet UIButton *descbtn;
 @property(nonatomic,retain) IBOutlet UILabel *numLabel;
+@property(nonatomic,retain) IBOutlet XLTouchLabel *phoneLabel;
+@property(nonatomic,retain) IBOutlet XLTouchLabel *descLabel;
 
 - (IBAction)shareToSina:(id)sender;
 
