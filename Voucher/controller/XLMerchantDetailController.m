@@ -296,7 +296,7 @@
 #pragma mark - XLSinaEngineDelegate
 - (void)didLoginSina
 {
-    [_sinaEngine sendStatus:@"asfsdfasdfadfas"];
+    [_sinaEngine sendStatus:@"aaaaaaaaaaaaaaaaa"];
 }
 
 - (void)didFialdLoginSina

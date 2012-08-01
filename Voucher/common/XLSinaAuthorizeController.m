@@ -50,7 +50,7 @@
     [naviBar addSubview:leftItem];
 }
 
-- (void)backMore
+- (void)goBack
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -97,7 +97,6 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request 
  navigationType:(UIWebViewNavigationType)navigationType
 {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
     NSRange range = [request.URL.absoluteString rangeOfString:@"code="];
     
     if (range.location != NSNotFound)
@@ -115,6 +114,11 @@
     }else {
         return YES;
     }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - NSURLConnectionDelegate
