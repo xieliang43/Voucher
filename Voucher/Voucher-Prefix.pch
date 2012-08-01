@@ -24,7 +24,7 @@
     #define Debug(format, ...)
 #endif
 
-#define baseUrl @"http://192.168.1.100:8080/VoucherSys"
+//#define baseUrl @"http://192.168.1.100:8080/VoucherSys"
 //#define baseUrl @"http://192.168.1.102:8080/VoucherSys"
 //#define baseUrl @"http://172.28.1.223:8080/VoucherSys"
-//#define baseUrl @"http://223.4.183.185/VoucherSys"
+#define baseUrl @"http://223.4.183.185/VoucherSys"
