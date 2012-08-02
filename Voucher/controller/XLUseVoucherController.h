@@ -13,7 +13,9 @@
     UITextField *_usePassField;
 }
 
-@property (nonatomic,assign) NSInteger viid;
+@property (nonatomic,retain) NSDictionary *voucher;
+@property (nonatomic,retain) IBOutlet UIImageView *imageView;
+@property (nonatomic,retain) IBOutlet UITextView *descView;
 
 - (IBAction)doUseVoucher:(id)sender;
 

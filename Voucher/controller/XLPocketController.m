@@ -45,6 +45,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _queue = [[NSOperationQueue alloc] init];
+        [_queue setMaxConcurrentOperationCount:2];
     }
     return self;
 }
@@ -112,6 +114,18 @@
     }else {
         cell.flagView.image = [UIImage imageNamed:@"poket_ues.png"];
     }
+    NSString *imageUrlStr = [infoDic objectForKey:@"image"];
+    UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
+    if (!image) {
+        NSURL *url = [NSURL URLWithString:imageUrlStr];
+        CTLoadImageOperation *operation = [[CTLoadImageOperation alloc] initWithUrl:url
+                                                                             target:self
+                                                                             action:@selector(didLoadImage:) 
+                                                                          indexPath:indexPath];
+        [_queue addOperation:operation];
+        [operation release];
+
+    } 
     return cell;
 }
 
@@ -145,9 +159,20 @@
     }else {
         [self.myTabController hideMyTabBar];
         XLUseVoucherController *useVoucher = [[XLUseVoucherController alloc] initWithNibName:nil bundle:nil];
-        useVoucher.viid = [[infoDic objectForKey:@"viId"] intValue];
+        useVoucher.voucher = infoDic;
         [self.navigationController pushViewController:useVoucher animated:YES];
         [useVoucher release];
+    }
+}
+
+#pragma mark - NSOperation 回调
+- (void)didLoadImage:(NSDictionary *)info
+{
+    NSIndexPath *indexPath = [info objectForKey:@"indexPath"];
+    if ([info objectForKey:@"image"]) {
+        NSData *data = UIImageJPEGRepresentation([info objectForKey:@"image"], 1.0);
+        NSString *path = [[_dataArray objectAtIndex:indexPath.row] objectForKey:@"image"];
+        [XLTools saveFileToCache:data withName:[XLTools md5:path]];
     }
 }
 

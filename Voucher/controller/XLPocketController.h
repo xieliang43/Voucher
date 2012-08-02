@@ -10,11 +10,13 @@
 #import "XLSuperController.h"
 #import "XLPocketCell.h"
 #import "XLUseVoucherController.h"
+#import "CTLoadImageOperation.h"
 
 @interface XLPocketController : XLSuperController
 <UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *_dataArray;
+    NSOperationQueue *_queue;
 }
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;
