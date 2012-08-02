@@ -10,6 +10,7 @@
 
 @implementation XLPocketCell
 
+@synthesize merchantLabel = _merchantLabel;
 @synthesize priceLabel = _priceLabel;
 @synthesize noLabel = _noLabel;
 @synthesize dateLabel = _dateLabel;
@@ -17,6 +18,7 @@
 
 - (void)dealloc
 {
+    [_merchantLabel release];
     [_flagView release];
     [_priceLabel release];
     [_noLabel release];

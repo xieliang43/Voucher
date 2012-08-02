@@ -19,9 +19,7 @@
 @synthesize logoView = _logoView;
 @synthesize nameLabel = _nameLabel;
 @synthesize addressLabel = _addressLabel;
-@synthesize numLabel = _numLabel;
-@synthesize phoneLabel = _phoneLabel;
-@synthesize descLabel = _descLabel;
+@synthesize numButton = _numButton;
 
 - (void)dealloc
 {
@@ -31,9 +29,7 @@
     [_logoView release];
     [_nameLabel release];
     [_addressLabel release];
-    [_numLabel release];
-    [_phoneLabel release];
-    [_descLabel release];
+    [_numButton release];
     
     [_queue release];
     
@@ -95,13 +91,10 @@
     
     [self setNavigationBar];
     
-    _phoneLabel.text = [NSString stringWithFormat:@"电话：%@",[_merchantInfo objectForKey:@"telNo"]];
-    [_phoneLabel addTarget:self action:@selector(makeCall)];
-    _descLabel.text = @"商家简介";
-    [_descLabel addTarget:self action:@selector(displayDescription)];
-    
     _nameLabel.text = [_merchantInfo objectForKey:@"shopName"];
     _addressLabel.text = [_merchantInfo objectForKey:@"shopAddress"];
+    NSString *str = [NSString stringWithFormat:@"电话：%@",[_merchantInfo objectForKey:@"telNo"]];
+    [_numButton setTitle:str forState:UIControlStateNormal];
     
     NSString *imageUrlStr = [_merchantInfo objectForKey:@"image"];
     UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
@@ -150,14 +143,14 @@
     
 }
 
-- (void)makeCall
+- (IBAction)makeCall:(id)sender
 {
     Debug(@"call label");
     NSString *urlStr = [NSString stringWithFormat:@"tel:%@",[_merchantInfo objectForKey:@"telNo"]];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 }
 
-- (void)displayDescription
+- (IBAction)displayDescription:(id)sender
 {
     NSLog(@"desc");
 }
@@ -221,7 +214,7 @@
             NSDictionary *dataDic = [dic objectForKey:@"info"];
             int total = [[dataDic objectForKey:@"total"] intValue];
             int rest = [[dataDic objectForKey:@"rest"] intValue];
-            _numLabel.text = [NSString stringWithFormat:@"剩%d张/共%d张",rest,total];
+            //_numLabel.text = [NSString stringWithFormat:@"剩%d张/共%d张",rest,total];
             _dataArray = [[dataDic objectForKey:@"vouchers"] retain];
             [_tableView reloadData];
         }else {

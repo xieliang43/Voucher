@@ -27,10 +27,10 @@
 @property(nonatomic,retain) IBOutlet UIImageView *logoView;
 @property(nonatomic,retain) IBOutlet UILabel *nameLabel;
 @property(nonatomic,retain) IBOutlet UILabel *addressLabel;
-@property(nonatomic,retain) IBOutlet UILabel *numLabel;
-@property(nonatomic,retain) IBOutlet XLTouchLabel *phoneLabel;
-@property(nonatomic,retain) IBOutlet XLTouchLabel *descLabel;
+@property(nonatomic,retain) IBOutlet UIButton *numButton;
 
 - (IBAction)shareToSina:(id)sender;
+- (IBAction)displayDescription:(id)sender;
+- (IBAction)makeCall:(id)sender;
 
 @end

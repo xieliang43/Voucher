@@ -10,6 +10,7 @@
 
 @interface XLPocketCell : UITableViewCell
 
+@property (nonatomic,retain) IBOutlet UILabel *merchantLabel;
 @property (nonatomic,retain) IBOutlet UILabel *priceLabel;
 @property (nonatomic,retain) IBOutlet UILabel *noLabel;
 @property (nonatomic,retain) IBOutlet UILabel *dateLabel;

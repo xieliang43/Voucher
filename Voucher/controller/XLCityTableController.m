@@ -90,6 +90,9 @@
     }else {
         [self goBack:nil];
     }
+    if ([XLTools isLogin]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CITY_INFO_CHANGE" object:nil userInfo:nil];
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(NSInteger)type

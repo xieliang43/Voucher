@@ -34,9 +34,10 @@
         // Custom initialization
         _usePassField = [[UITextField alloc] initWithFrame:CGRectMake(20, 50, 245, 37)];
         _usePassField.secureTextEntry = YES;
-        _usePassField.placeholder = @"使用密码";
+        _usePassField.placeholder = @"请输入4为数字使用密码";
         _usePassField.borderStyle = UITextBorderStyleRoundedRect;
         _usePassField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        _usePassField.keyboardType = UIKeyboardTypeNumberPad;
     }
     return self;
 }

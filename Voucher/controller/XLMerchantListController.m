@@ -38,6 +38,8 @@
     
     [_keyWord release];
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"CITY_INFO_CHANGE" object:nil];
     [super dealloc];
 }
 
@@ -78,8 +80,16 @@
         
         _queue = [[NSOperationQueue alloc] init];
         [_queue setMaxConcurrentOperationCount:2];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cityInfoDidChange) name:@"CITY_INFO_CHANGE" object:nil];
     }
     return self;
+}
+
+- (void)cityInfoDidChange
+{
+    start = 0;
+    [self doSearch];
 }
 
 - (void)viewDidLoad

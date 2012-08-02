@@ -107,6 +107,7 @@
     cell.priceLabel.text = [[infoDic objectForKey:@"price"] stringValue];
     cell.noLabel.text = [infoDic objectForKey:@"vchNo"];
     cell.dateLabel.text = [infoDic objectForKey:@"endDate"];
+    cell.merchantLabel.text = [infoDic objectForKey:@"name"];
     if ([[infoDic objectForKey:@"isUsed"] intValue] == 1) {
         cell.flagView.image = [UIImage imageNamed:@"poket_uesed.png"];
     }else if ([[infoDic objectForKey:@"isActive"] intValue] == 0) {
