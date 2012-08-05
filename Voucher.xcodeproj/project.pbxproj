@@ -61,6 +61,8 @@
 		CDA2B7A615AC75E800CC1815 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */; };
 		CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */; };
 		CDA85A9815BC40E600A8FEA7 /* CTLoadImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA85A9715BC40E600A8FEA7 /* CTLoadImageOperation.m */; };
+		CDB4648D15CE786800D0C528 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB4648B15CE786800D0C528 /* Default.png */; };
+		CDB4648E15CE786800D0C528 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB4648C15CE786800D0C528 /* Default@2x.png */; };
 		CDB63BD015B445D10009C410 /* selected_gou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BCF15B445D10009C410 /* selected_gou@2x.png */; };
 		CDB63BD315B447100009C410 /* XLCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB63BD215B447100009C410 /* XLCityCell.xib */; };
 		CDB63BD615B4472C0009C410 /* XLCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB63BD515B4472C0009C410 /* XLCityCell.m */; };
@@ -208,6 +210,8 @@
 		CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CDA85A9615BC40E600A8FEA7 /* CTLoadImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLoadImageOperation.h; sourceTree = "<group>"; };
 		CDA85A9715BC40E600A8FEA7 /* CTLoadImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLoadImageOperation.m; sourceTree = "<group>"; };
+		CDB4648B15CE786800D0C528 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
+		CDB4648C15CE786800D0C528 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../Default@2x.png"; sourceTree = "<group>"; };
 		CDB63BCF15B445D10009C410 /* selected_gou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_gou@2x.png"; sourceTree = "<group>"; };
 		CDB63BD215B447100009C410 /* XLCityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCityCell.xib; sourceTree = "<group>"; };
 		CDB63BD415B4472B0009C410 /* XLCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCityCell.h; sourceTree = "<group>"; };
@@ -427,6 +431,8 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				CDB4648B15CE786800D0C528 /* Default.png */,
+				CDB4648C15CE786800D0C528 /* Default@2x.png */,
 				CDF8098F15CAC5B70073AE5F /* info_mid@2x.png */,
 				E046983D15C904E8008C37B8 /* 114.png */,
 				E046983A15C904E1008C37B8 /* 57.png */,
@@ -789,6 +795,8 @@
 				CDF8099015CAC5B70073AE5F /* info_mid@2x.png in Resources */,
 				E090407A15CBB1D400F88275 /* go_back.png in Resources */,
 				E090407B15CBB1D400F88275 /* red_btn.png in Resources */,
+				CDB4648D15CE786800D0C528 /* Default.png in Resources */,
+				CDB4648E15CE786800D0C528 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
