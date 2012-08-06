@@ -38,6 +38,25 @@
     titleLabel.text = @"钱包";
     [naviBar addSubview:titleLabel];
     [titleLabel release];
+    
+    UIButton *rightItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightItem.frame = CGRectMake(320-10-51, 6, 51, 32);
+    [rightItem setBackgroundImage:[UIImage imageNamed:@"red_btn.png"] forState:UIControlStateNormal];
+    [rightItem setTitle:@"编辑" forState:UIControlStateNormal];
+    rightItem.titleLabel.font = [UIFont systemFontOfSize:16];
+    [rightItem addTarget:self action:@selector(editPocket:) forControlEvents:UIControlEventTouchUpInside];
+    [naviBar addSubview:rightItem];
+}
+
+- (void)editPocket:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    if (_tableView.editing) {
+        [btn setTitle:@"完成" forState:UIControlStateNormal];
+    }else{
+        [btn setTitle:@"编辑" forState:UIControlStateNormal];
+    }
+    _tableView.editing = !_tableView.editing;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -128,6 +147,11 @@
 
     } 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 //delegate

@@ -420,6 +420,9 @@
 				E05C50BA15BE73500053C33F /* XLVoucherCell.h */,
 				E05C50BB15BE73500053C33F /* XLVoucherCell.m */,
 				E05C50C115BE73B30053C33F /* XLVoucherCell.xib */,
+				E05BCFFF15CFA2BD00615E0C /* XLRoleViewController.h */,
+				E05BD00015CFA2BD00615E0C /* XLRoleViewController.m */,
+				E05BD00115CFA2BD00615E0C /* XLRoleViewController.xib */,
 				E08AEF3815AFCD0A00A4A0F3 /* XLPocketController.h */,
 				E08AEF3915AFCD0A00A4A0F3 /* XLPocketController.m */,
 				E08AEF3A15AFCD0A00A4A0F3 /* XLPocketController.xib */,
@@ -429,9 +432,6 @@
 				CD88A2E315C53D2D007AB836 /* XLUseVoucherController.h */,
 				CD88A2E415C53D2F007AB836 /* XLUseVoucherController.m */,
 				CD88A2E515C53D2F007AB836 /* XLUseVoucherController.xib */,
-				E05BCFFF15CFA2BD00615E0C /* XLRoleViewController.h */,
-				E05BD00015CFA2BD00615E0C /* XLRoleViewController.m */,
-				E05BD00115CFA2BD00615E0C /* XLRoleViewController.xib */,
 			);
 			name = voucher;
 			sourceTree = "<group>";
