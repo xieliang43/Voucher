@@ -11,6 +11,7 @@
 #import "CTLoadImageOperation.h"
 #import "XLSinaEngine.h"
 #import "XLTouchLabel.h"
+#import "XLRoleViewController.h"
 
 @interface XLMerchantDetailController : UIViewController
 <UITableViewDelegate,UITableViewDataSource,XLVoucherCellDelegate,XLSinaEngineDelegate>

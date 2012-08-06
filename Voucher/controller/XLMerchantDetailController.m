@@ -138,11 +138,6 @@
     [_sinaEngine loginSina];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    
-}
-
 - (IBAction)makeCall:(id)sender
 {
     Debug(@"call label");
@@ -152,7 +147,10 @@
 
 - (IBAction)displayDescription:(id)sender
 {
-    NSLog(@"desc");
+    Debug(@"role");
+    XLRoleViewController *roleController = [[XLRoleViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:roleController animated:YES];
+    [roleController release];
 }
 
 #pragma mark - NSOperation 回调
@@ -212,8 +210,8 @@
         NSDictionary *dic = [request.responseString JSONValue];
         if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
             NSDictionary *dataDic = [dic objectForKey:@"info"];
-            int total = [[dataDic objectForKey:@"total"] intValue];
-            int rest = [[dataDic objectForKey:@"rest"] intValue];
+            //int total = [[dataDic objectForKey:@"total"] intValue];
+            //int rest = [[dataDic objectForKey:@"rest"] intValue];
             //_numLabel.text = [NSString stringWithFormat:@"剩%d张/共%d张",rest,total];
             _dataArray = [[dataDic objectForKey:@"vouchers"] retain];
             [_tableView reloadData];
@@ -228,7 +226,7 @@
             [alert release];
         }
     }else {
-        Debug(@"%@",request.responseStatusCode);
+        Debug(@"%d",request.responseStatusCode);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:@"服务器内部异常！" 
                                                        delegate:nil

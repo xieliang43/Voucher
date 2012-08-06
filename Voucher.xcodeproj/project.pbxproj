@@ -117,6 +117,8 @@
 		E046983B15C904E1008C37B8 /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983A15C904E1008C37B8 /* 57.png */; };
 		E046983E15C904E8008C37B8 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983D15C904E8008C37B8 /* 114.png */; };
 		E046984115C907E0008C37B8 /* XLTouchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E046984015C907E0008C37B8 /* XLTouchLabel.m */; };
+		E05BD00215CFA2BD00615E0C /* XLRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E05BD00015CFA2BD00615E0C /* XLRoleViewController.m */; };
+		E05BD00315CFA2BD00615E0C /* XLRoleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E05BD00115CFA2BD00615E0C /* XLRoleViewController.xib */; };
 		E05C50BC15BE73500053C33F /* XLVoucherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E05C50BB15BE73500053C33F /* XLVoucherCell.m */; };
 		E05C50C215BE73B30053C33F /* XLVoucherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E05C50C115BE73B30053C33F /* XLVoucherCell.xib */; };
 		E064C97415B0008B0051E143 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E064C97215B0008B0051E143 /* search_bg@2x.png */; };
@@ -295,6 +297,9 @@
 		E046983D15C904E8008C37B8 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../../114.png; sourceTree = "<group>"; };
 		E046983F15C907E0008C37B8 /* XLTouchLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTouchLabel.h; sourceTree = "<group>"; };
 		E046984015C907E0008C37B8 /* XLTouchLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTouchLabel.m; sourceTree = "<group>"; };
+		E05BCFFF15CFA2BD00615E0C /* XLRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLRoleViewController.h; sourceTree = "<group>"; };
+		E05BD00015CFA2BD00615E0C /* XLRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLRoleViewController.m; sourceTree = "<group>"; };
+		E05BD00115CFA2BD00615E0C /* XLRoleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLRoleViewController.xib; sourceTree = "<group>"; };
 		E05C50BA15BE73500053C33F /* XLVoucherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLVoucherCell.h; sourceTree = "<group>"; };
 		E05C50BB15BE73500053C33F /* XLVoucherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLVoucherCell.m; sourceTree = "<group>"; };
 		E05C50C115BE73B30053C33F /* XLVoucherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLVoucherCell.xib; sourceTree = "<group>"; };
@@ -424,6 +429,9 @@
 				CD88A2E315C53D2D007AB836 /* XLUseVoucherController.h */,
 				CD88A2E415C53D2F007AB836 /* XLUseVoucherController.m */,
 				CD88A2E515C53D2F007AB836 /* XLUseVoucherController.xib */,
+				E05BCFFF15CFA2BD00615E0C /* XLRoleViewController.h */,
+				E05BD00015CFA2BD00615E0C /* XLRoleViewController.m */,
+				E05BD00115CFA2BD00615E0C /* XLRoleViewController.xib */,
 			);
 			name = voucher;
 			sourceTree = "<group>";
@@ -797,6 +805,7 @@
 				E090407B15CBB1D400F88275 /* red_btn.png in Resources */,
 				CDB4648D15CE786800D0C528 /* Default.png in Resources */,
 				CDB4648E15CE786800D0C528 /* Default@2x.png in Resources */,
+				E05BD00315CFA2BD00615E0C /* XLRoleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,6 +861,7 @@
 				CDDCBF4315C6CAB4009F7ECC /* XLSinaAuthorizeController.m in Sources */,
 				CDDCBF4415C6CAB4009F7ECC /* XLSinaEngine.m in Sources */,
 				E046984115C907E0008C37B8 /* XLTouchLabel.m in Sources */,
+				E05BD00215CFA2BD00615E0C /* XLRoleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
