@@ -59,6 +59,7 @@
 		CD88A2F415C57A1B007AB836 /* XLSuperController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD88A2F215C57A1B007AB836 /* XLSuperController.xib */; };
 		CDA2B7A315AC732C00CC1815 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */; };
 		CDA2B7A615AC75E800CC1815 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */; };
+		CDA64B0615D0056900E99B35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CDA64B0815D0056900E99B35 /* Localizable.strings */; };
 		CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */; };
 		CDA85A9815BC40E600A8FEA7 /* CTLoadImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA85A9715BC40E600A8FEA7 /* CTLoadImageOperation.m */; };
 		CDB4648D15CE786800D0C528 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB4648B15CE786800D0C528 /* Default.png */; };
@@ -209,6 +210,8 @@
 		CDA2B7A115AC732B00CC1815 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CDA2B7A215AC732B00CC1815 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		CDA2B7A515AC75E800CC1815 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
+		CDA64B0715D0056900E99B35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CDA64B0915D0057000E99B35 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CDA85A9615BC40E600A8FEA7 /* CTLoadImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLoadImageOperation.h; sourceTree = "<group>"; };
 		CDA85A9715BC40E600A8FEA7 /* CTLoadImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLoadImageOperation.m; sourceTree = "<group>"; };
@@ -575,6 +578,7 @@
 				CDD19D8015989C80006D63D0 /* main.m */,
 				CDD19D8215989C80006D63D0 /* Voucher-Prefix.pch */,
 				CD0A8EA215A46CEA001B4DD5 /* interface.plist */,
+				CDA64B0815D0056900E99B35 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -715,6 +719,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = CDD19D6515989C7F006D63D0;
 			productRefGroup = CDD19D7115989C7F006D63D0 /* Products */;
@@ -806,6 +811,7 @@
 				CDB4648D15CE786800D0C528 /* Default.png in Resources */,
 				CDB4648E15CE786800D0C528 /* Default@2x.png in Resources */,
 				E05BD00315CFA2BD00615E0C /* XLRoleViewController.xib in Resources */,
+				CDA64B0615D0056900E99B35 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,6 +874,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		CDA64B0815D0056900E99B35 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDA64B0715D0056900E99B35 /* en */,
+				CDA64B0915D0057000E99B35 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		CDD19D7D15989C80006D63D0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
