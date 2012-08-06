@@ -14,6 +14,21 @@
 
 @implementation XLRoleViewController
 
+@synthesize nameStr = _nameStr;
+@synthesize descStr = _descStr;
+
+@synthesize descView = _descView;
+@synthesize nameLabel = _nameLabel;
+
+- (void)dealloc
+{
+    [_nameStr release];
+    [_descStr release];
+    [_descView release];
+    [_nameLabel release];
+    [super dealloc];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +50,7 @@
     titleLabel.textAlignment = UITextAlignmentCenter;
     titleLabel.font = [UIFont boldSystemFontOfSize:19];
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.text = @"使用规则";
+    titleLabel.text = @"商家简介";
     [naviBar addSubview:titleLabel];
     [titleLabel release];
     
@@ -60,6 +75,9 @@
     // Do any additional setup after loading the view from its nib.
     
     [self setNavigationBar];
+    
+    _nameLabel.text = _nameStr;
+    _descView.text = _descStr;
 }
 
 - (void)viewDidUnload

@@ -149,6 +149,10 @@
 {
     Debug(@"role");
     XLRoleViewController *roleController = [[XLRoleViewController alloc] initWithNibName:nil bundle:nil];
+    Debug(@"%@",[_merchantInfo objectForKey:@"shopName"]);
+    Debug(@"%@",[_merchantInfo objectForKey:@"description"]);
+    roleController.nameStr = [_merchantInfo objectForKey:@"shopName"];
+    roleController.descStr = [_merchantInfo objectForKey:@"description"];
     [self.navigationController pushViewController:roleController animated:YES];
     [roleController release];
 }

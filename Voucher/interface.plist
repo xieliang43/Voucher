@@ -30,5 +30,7 @@
 	<string>walletAction!getWallet.action</string>
 	<key>useVoucher</key>
 	<string>walletAction!useWallet.action</string>
+	<key>deleteVoucher</key>
+	<string>walletAction!deleteVoucher.action</string>
 </dict>
 </plist>

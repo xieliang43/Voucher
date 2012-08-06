@@ -66,6 +66,8 @@
         // Custom initialization
         _queue = [[NSOperationQueue alloc] init];
         [_queue setMaxConcurrentOperationCount:2];
+        
+        _dataArray = [[NSMutableArray array] retain];
     }
     return self;
 }
@@ -151,7 +153,20 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dic = [_dataArray objectAtIndex:indexPath.row];
     
+    NSString *urlStr = [XLTools getInterfaceByKey:@"deleteVoucher"];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
+    req.delegate = self;
+    req.didFailSelector = @selector(didFailDeleteVoucher:);
+    req.didFinishSelector = @selector(didFinishDeleteVoucher:);
+    req.requestMethod = @"POST";
+    req.userInfo = [NSDictionary dictionaryWithObject:indexPath forKey:@"indexPath"];
+    [req addDefaultPostValue];
+    [req setPostValue:[dic objectForKey:@"viId"] forKey:@"uvId"];
+    [req startAsynchronous];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 //delegate
@@ -209,7 +224,8 @@
     if (request.responseStatusCode == 200) {
         NSDictionary *dic = [request.responseString JSONValue];
         if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
-            _dataArray = [[dic objectForKey:@"info"] retain];
+            [_dataArray removeAllObjects];
+            [_dataArray addObjectsFromArray:[dic objectForKey:@"info"]];
             [_tableView reloadData];
         }else {
             Debug(@"%@",[dic objectForKey:@"resultInfo"]);
@@ -236,6 +252,55 @@
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     Debug(@"网络链接或服务器问题！");
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请检查网络链接或联系管理员！" 
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
+- (void)didFinishDeleteVoucher:(ASIFormDataRequest *)request
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    NSIndexPath *path = [request.userInfo objectForKey:@"indexPath"];
+    
+    Debug(@"%@",request.responseString);
+    if (request.responseStatusCode == 200) {
+        NSDictionary *dic = [request.responseString JSONValue];
+        if ([[dic objectForKey:@"resultCode"] intValue] == 1) {
+            
+            [_dataArray removeObjectAtIndex:path.row];
+            [_tableView beginUpdates];
+            [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
+            [_tableView endUpdates];
+            
+        }else {
+            Debug(@"%@",[dic objectForKey:@"resultInfo"]);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:[dic objectForKey:@"resultInfo"] 
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+    }else {
+        Debug(@"%@",request.responseStatusCode);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"服务器内部异常！" 
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+}
+
+- (void)didFailDeleteVoucher:(ASIFormDataRequest *)request
+{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                     message:@"请检查网络链接或联系管理员！" 
