@@ -400,7 +400,12 @@
         [_areaBtn setTitle:obj forState:UIControlStateNormal];
     }else if (oType == DISTANCE_TYPE) {
         _distance = [obj retain];
-        NSString *disString = [NSString stringWithFormat:@"%@米",obj];
+        NSString *disString = nil;
+        if ([obj isEqualToString:@"不限"]) {
+            disString = [NSString stringWithFormat:@"%@",obj];
+        }else {
+            disString = [NSString stringWithFormat:@"%@米",obj];
+        }
         [_distanceBtn setTitle:disString forState:UIControlStateNormal];
     }else {
         _merchantType = [[NSString stringWithFormat:@"%d",oid] retain];

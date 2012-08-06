@@ -92,7 +92,13 @@
     }
     cell.textLabel.textColor = [UIColor whiteColor];
     if (_optionType == DISTANCE_TYPE) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@米",[[_optionArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
+        NSString *tmpStr = [[_optionArray objectAtIndex:indexPath.row] objectForKey:@"name"];
+        if ([tmpStr isEqualToString:@"不限"]) {
+            cell.textLabel.text = tmpStr;
+        }else {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@米",tmpStr];
+        }
+        
     }else {
         cell.textLabel.text = [[_optionArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     }

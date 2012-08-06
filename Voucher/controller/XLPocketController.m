@@ -51,12 +51,12 @@
 - (void)editPocket:(id)sender
 {
     UIButton *btn = (UIButton *)sender;
+    _tableView.editing = !_tableView.editing;
     if (_tableView.editing) {
         [btn setTitle:@"完成" forState:UIControlStateNormal];
     }else{
         [btn setTitle:@"编辑" forState:UIControlStateNormal];
     }
-    _tableView.editing = !_tableView.editing;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
