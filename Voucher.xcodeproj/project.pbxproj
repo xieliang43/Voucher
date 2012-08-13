@@ -134,6 +134,8 @@
 		E08AEF4315AFCD2300A4A0F3 /* XLMoreController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E08AEF4115AFCD2300A4A0F3 /* XLMoreController.xib */; };
 		E090407A15CBB1D400F88275 /* go_back.png in Resources */ = {isa = PBXBuildFile; fileRef = E090407815CBB1D400F88275 /* go_back.png */; };
 		E090407B15CBB1D400F88275 /* red_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = E090407915CBB1D400F88275 /* red_btn.png */; };
+		E09DDF5115D8DE6600E1E4E8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E09DDF4F15D8DE6600E1E4E8 /* Default@2x.png */; };
+		E09DDF5215D8DE6600E1E4E8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E09DDF5015D8DE6600E1E4E8 /* Default.png */; };
 		E0F21ECE15B3A8C3006A65F2 /* XLCityTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F21ECC15B3A8C3006A65F2 /* XLCityTableController.m */; };
 		E0F21ECF15B3A8C3006A65F2 /* XLCityTableController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F21ECD15B3A8C3006A65F2 /* XLCityTableController.xib */; };
 /* End PBXBuildFile section */
@@ -320,6 +322,8 @@
 		E08AEF4115AFCD2300A4A0F3 /* XLMoreController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMoreController.xib; sourceTree = "<group>"; };
 		E090407815CBB1D400F88275 /* go_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go_back.png; sourceTree = "<group>"; };
 		E090407915CBB1D400F88275 /* red_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_btn.png; sourceTree = "<group>"; };
+		E09DDF4F15D8DE6600E1E4E8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../Default@2x.png"; sourceTree = "<group>"; };
+		E09DDF5015D8DE6600E1E4E8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
 		E0F21ECB15B3A8C3006A65F2 /* XLCityTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCityTableController.h; sourceTree = "<group>"; };
 		E0F21ECC15B3A8C3006A65F2 /* XLCityTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCityTableController.m; sourceTree = "<group>"; };
 		E0F21ECD15B3A8C3006A65F2 /* XLCityTableController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCityTableController.xib; sourceTree = "<group>"; };
@@ -438,6 +442,8 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				E09DDF4F15D8DE6600E1E4E8 /* Default@2x.png */,
+				E09DDF5015D8DE6600E1E4E8 /* Default.png */,
 				CDF8098F15CAC5B70073AE5F /* info_mid@2x.png */,
 				E046983D15C904E8008C37B8 /* 114.png */,
 				E046983A15C904E1008C37B8 /* 57.png */,
@@ -804,6 +810,8 @@
 				E090407B15CBB1D400F88275 /* red_btn.png in Resources */,
 				E05BD00315CFA2BD00615E0C /* XLRoleViewController.xib in Resources */,
 				CDA64B0615D0056900E99B35 /* Localizable.strings in Resources */,
+				E09DDF5115D8DE6600E1E4E8 /* Default@2x.png in Resources */,
+				E09DDF5215D8DE6600E1E4E8 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
