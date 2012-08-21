@@ -109,6 +109,13 @@
     [_passwordField resignFirstResponder];
 }
 
+- (IBAction)findPassword:(id)sender
+{
+    XLFindPasswordController *findPassword = [[XLFindPasswordController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:findPassword animated:YES];
+    [findPassword release];
+}
+
 #pragma mark - login and regist
 - (IBAction)doRegist:(id)sender
 {

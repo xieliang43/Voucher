@@ -17,6 +17,8 @@
 #import "XLMoreController.h"
 #import "XLCityTableController.h"
 
+#import "XLFindPasswordController.h"
+
 @interface XLUserLoginController : UIViewController
 
 @property (nonatomic,retain) IBOutlet UITextField *usernameField;
@@ -26,5 +28,6 @@
 - (IBAction)doLogin:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
 - (IBAction)processReturnKey:(UITextField *)sender;
+- (IBAction)findPassword:(id)sender;
 
 @end

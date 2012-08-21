@@ -32,5 +32,9 @@
 	<string>walletAction!useWallet.action</string>
 	<key>deleteVoucher</key>
 	<string>walletAction!deleteVoucher.action</string>
+	<key>setPassword</key>
+	<string>userAction!resetPassword.action</string>
+	<key>fetchResetCode</key>
+	<string>userAction!getResetCode</string>
 </dict>
 </plist>
