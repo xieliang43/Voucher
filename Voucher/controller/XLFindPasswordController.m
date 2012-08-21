@@ -133,7 +133,8 @@
     }
     
     if (_nPassword.text) {
-        //验证密码
+        //验证密码 6-20 位
+        
     }
     
     NSString *urlStr = [XLTools getInterfaceByKey:@"setPassword"];
