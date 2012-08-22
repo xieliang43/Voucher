@@ -542,7 +542,6 @@
 		CDD19D6515989C7F006D63D0 = {
 			isa = PBXGroup;
 			children = (
-				E042BBF915E4B4A700C9B43E /* MessageUI.framework */,
 				CDD19D7A15989C7F006D63D0 /* Voucher */,
 				CDD19D7315989C7F006D63D0 /* Frameworks */,
 				CDD19D7115989C7F006D63D0 /* Products */,
@@ -561,9 +560,10 @@
 			isa = PBXGroup;
 			children = (
 				E042BBF715E4A40300C9B43E /* libicucore.dylib */,
+				CDD19DB615989DDB006D63D0 /* libz.dylib */,
+				E042BBF915E4B4A700C9B43E /* MessageUI.framework */,
 				CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */,
 				CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */,
-				CDD19DB615989DDB006D63D0 /* libz.dylib */,
 				CDD19DB415989DD3006D63D0 /* MobileCoreServices.framework */,
 				CDD19DB215989DBE006D63D0 /* SystemConfiguration.framework */,
 				CDD19DB015989D94006D63D0 /* CFNetwork.framework */,
