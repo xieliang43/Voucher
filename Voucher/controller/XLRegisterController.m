@@ -101,6 +101,17 @@
 
 - (IBAction)fetchVerifyCode:(id)sender
 {
+    //验证电话号码
+    if (![_phoneField.text stringByMatching:@"^(13|15|18)[0-9]{9}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"请输入正确的手机号码！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     NSString *urlStr = [XLTools getInterfaceByKey:@"fetch_code"];
     Debug(@"%@",urlStr);
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -116,8 +127,15 @@
 
 - (IBAction)doRegister:(id)sender
 {
-    if (_phoneField.text) {
-        //验证手机号
+    //验证电话号码
+    if (![_phoneField.text stringByMatching:@"^(13|15|18)[0-9]{9}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"请输入正确的手机号码！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
     }
     
     if (![_verifyCodeStr isEqualToString:_verifyField.text]) {
@@ -132,8 +150,15 @@
         return;
     }
     
-    if (_passwordField.text) {
-        //验证密码
+    //验证密码
+    if (![_passwordField.text stringByMatching:@"^[A-Za-z0-9]{6,20}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"密码只能包含数字和字母在6到20位之间！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
     }
     
     NSString *urlStr = [XLTools getInterfaceByKey:@"user_regist"];

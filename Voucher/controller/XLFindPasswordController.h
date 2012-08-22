@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RegexKitLite.h"
 
 @interface XLFindPasswordController : UIViewController
 {

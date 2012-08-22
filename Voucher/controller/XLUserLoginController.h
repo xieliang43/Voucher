@@ -19,6 +19,8 @@
 
 #import "XLFindPasswordController.h"
 
+#import "RegexKitLite.h"
+
 @interface XLUserLoginController : UIViewController
 
 @property (nonatomic,retain) IBOutlet UITextField *usernameField;

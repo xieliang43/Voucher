@@ -101,6 +101,16 @@
 #pragma mark - 
 - (IBAction)fetchVerifyCode:(id)sender
 {
+    //验证电话号码
+    if (![_phoneField.text stringByMatching:@"^(13|15|18)[0-9]{9}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"请输入正确的手机号码！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     NSString *urlStr = [XLTools getInterfaceByKey:@"fetchResetCode"];
     Debug(@"%@",urlStr);
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -116,8 +126,14 @@
 
 - (IBAction)setNewPassword:(id)sender
 {
-    if (_phoneField.text) {
-        //验证手机号
+    if (![_phoneField.text stringByMatching:@"^(13|15|18)[0-9]{9}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"请输入正确的手机号码！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
     }
     
     if (![_verifyCodeStr isEqualToString:_verifyField.text]) {
@@ -132,9 +148,25 @@
         return;
     }
     
-    if (_nPassword.text) {
-        //验证密码 6-20 位
-        
+    //验证密码
+    if (![_nPassword.text stringByMatching:@"^[A-Za-z0-9]{6,20}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"密码只能包含数字和字母在6到20位之间！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if (![_nPassword.text isEqualToString:_rPassword.text]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"两次输入密码不一致！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
     }
     
     NSString *urlStr = [XLTools getInterfaceByKey:@"setPassword"];
@@ -188,7 +220,7 @@
             [alert release];
         }
     }else {
-        Debug(@"%@",request.responseStatusCode);
+        Debug(@"%d",request.responseStatusCode);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:@"服务器内部异常！" 
                                                        delegate:nil

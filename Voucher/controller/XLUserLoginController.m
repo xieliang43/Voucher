@@ -126,6 +126,27 @@
 
 - (IBAction)doLogin:(id)sender
 {
+    //验证电话号码
+    if (![_usernameField.text stringByMatching:@"^(13|15|18)[0-9]{9}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"请输入正确的手机号码！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    //验证密码
+    if (![_passwordField.text stringByMatching:@"^[A-Za-z0-9]{6,20}$"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"密码只能包含数字和字母在6到20位之间！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     NSString *urlStr = [XLTools getInterfaceByKey:@"user_login"];
     Debug(@"%@",urlStr);
     ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
