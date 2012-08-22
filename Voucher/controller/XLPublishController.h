@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface XLPublishController : UIViewController
+@interface XLPublishController : UIViewController<MFMailComposeViewControllerDelegate>
 
-@property (nonatomic,retain) IBOutlet UITextView *contentView;
-@property (nonatomic,retain) IBOutlet UITextField *phoneField;
-
-- (IBAction)sendPublish:(id)sender;
+- (IBAction)phonePublish:(id)sender;
+- (IBAction)mailPublish:(id)sender;
 
 @end

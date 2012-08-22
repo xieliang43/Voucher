@@ -117,6 +117,7 @@
 		E03AD9E215AFB35400B70C12 /* XLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9E115AFB35400B70C12 /* XLTabBarController.m */; };
 		E042BBF515E4A18200C9B43E /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = E042BBF415E4A18200C9B43E /* RegexKitLite.m */; };
 		E042BBF815E4A40300C9B43E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E042BBF715E4A40300C9B43E /* libicucore.dylib */; };
+		E042BBFA15E4B4A700C9B43E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E042BBF915E4B4A700C9B43E /* MessageUI.framework */; };
 		E046983B15C904E1008C37B8 /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983A15C904E1008C37B8 /* 57.png */; };
 		E046983E15C904E8008C37B8 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983D15C904E8008C37B8 /* 114.png */; };
 		E046984115C907E0008C37B8 /* XLTouchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E046984015C907E0008C37B8 /* XLTouchLabel.m */; };
@@ -304,6 +305,7 @@
 		E042BBF315E4A18200C9B43E /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		E042BBF415E4A18200C9B43E /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		E042BBF715E4A40300C9B43E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		E042BBF915E4B4A700C9B43E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E046983A15C904E1008C37B8 /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../../57.png; sourceTree = "<group>"; };
 		E046983D15C904E8008C37B8 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../../114.png; sourceTree = "<group>"; };
 		E046983F15C907E0008C37B8 /* XLTouchLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTouchLabel.h; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E042BBFA15E4B4A700C9B43E /* MessageUI.framework in Frameworks */,
 				E042BBF815E4A40300C9B43E /* libicucore.dylib in Frameworks */,
 				CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */,
 				CD6EE79015BAE49D003561E4 /* CoreLocation.framework in Frameworks */,
@@ -539,6 +542,7 @@
 		CDD19D6515989C7F006D63D0 = {
 			isa = PBXGroup;
 			children = (
+				E042BBF915E4B4A700C9B43E /* MessageUI.framework */,
 				CDD19D7A15989C7F006D63D0 /* Voucher */,
 				CDD19D7315989C7F006D63D0 /* Frameworks */,
 				CDD19D7115989C7F006D63D0 /* Products */,
