@@ -116,6 +116,7 @@
 		E03AD9DE15AFB23C00B70C12 /* XLTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9DD15AFB23C00B70C12 /* XLTabBarItem.m */; };
 		E03AD9E215AFB35400B70C12 /* XLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E03AD9E115AFB35400B70C12 /* XLTabBarController.m */; };
 		E042BBF515E4A18200C9B43E /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = E042BBF415E4A18200C9B43E /* RegexKitLite.m */; };
+		E042BBF815E4A40300C9B43E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E042BBF715E4A40300C9B43E /* libicucore.dylib */; };
 		E046983B15C904E1008C37B8 /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983A15C904E1008C37B8 /* 57.png */; };
 		E046983E15C904E8008C37B8 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = E046983D15C904E8008C37B8 /* 114.png */; };
 		E046984115C907E0008C37B8 /* XLTouchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E046984015C907E0008C37B8 /* XLTouchLabel.m */; };
@@ -302,6 +303,7 @@
 		E03AD9E115AFB35400B70C12 /* XLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTabBarController.m; sourceTree = "<group>"; };
 		E042BBF315E4A18200C9B43E /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		E042BBF415E4A18200C9B43E /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		E042BBF715E4A40300C9B43E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		E046983A15C904E1008C37B8 /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../../57.png; sourceTree = "<group>"; };
 		E046983D15C904E8008C37B8 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../../114.png; sourceTree = "<group>"; };
 		E046983F15C907E0008C37B8 /* XLTouchLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTouchLabel.h; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E042BBF815E4A40300C9B43E /* libicucore.dylib in Frameworks */,
 				CDA85A8E15BC3B1E00A8FEA7 /* QuartzCore.framework in Frameworks */,
 				CD6EE79015BAE49D003561E4 /* CoreLocation.framework in Frameworks */,
 				CDD19DB715989DDB006D63D0 /* libz.dylib in Frameworks */,
@@ -553,6 +556,7 @@
 		CDD19D7315989C7F006D63D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E042BBF715E4A40300C9B43E /* libicucore.dylib */,
 				CDA85A8D15BC3B1E00A8FEA7 /* QuartzCore.framework */,
 				CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */,
 				CDD19DB615989DDB006D63D0 /* libz.dylib */,
