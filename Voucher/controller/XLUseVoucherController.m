@@ -17,6 +17,7 @@
 @synthesize voucher = _voucher;
 @synthesize imageView = _imageView;
 @synthesize descView = _descView;
+@synthesize indicator = _indicator;
 
 - (void)dealloc
 {
@@ -24,6 +25,7 @@
     [_descView release];
     [_voucher release];
     [_usePassField release];
+    [_indicator release];
     [super dealloc];
 }
 
@@ -78,9 +80,49 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBar];
+    [_indicator stopAnimating];
     NSString *imageUrlStr = [_voucher objectForKey:@"image"];
-    _imageView.image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
+    imageUrlStr = [imageUrlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
+    if (!image) {
+        NSURL *url = [NSURL URLWithString:imageUrlStr];
+        ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
+        req.requestMethod = @"POST";
+        req.delegate = self;
+        req.didFinishSelector = @selector(didFetchPic:);
+        req.didFailSelector = @selector(didFailFetchPic:);
+        [req startAsynchronous];
+        [_indicator startAnimating];
+    }else{
+        _imageView.image = image;
+    }
     _descView.text = [_voucher objectForKey:@"useRule"];
+}
+
+- (void)didFetchPic:(ASIFormDataRequest *)request
+{
+    [_indicator stopAnimating];
+    NSData *data = request.responseData;
+    UIImage *image = [UIImage imageWithData:data];
+    if (image) {
+        NSString *path = request.url.absoluteString;
+        [XLTools saveFileToCache:data withName:[XLTools md5:path]];
+        _imageView.image = image;
+    }
+}
+
+- (void)didFailFetchPic:(ASIFormDataRequest *)request
+{
+    Debug(@"网络链接或服务器问题！");
+    [_indicator stopAnimating];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                    message:@"请检查网络链接或联系管理员！"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 - (void)viewDidUnload
@@ -142,7 +184,7 @@
         [alert show];
         [alert release];
     }else {
-        Debug(@"%@",request.responseStatusCode);
+        Debug(@"%d",request.responseStatusCode);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:@"服务器内部异常！" 
                                                        delegate:nil

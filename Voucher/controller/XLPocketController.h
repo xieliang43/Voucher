@@ -17,7 +17,6 @@
 <UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *_dataArray;
-    NSOperationQueue *_queue;
 }
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;

@@ -260,6 +260,7 @@
     cell.addressLabel.text = [tmpDic objectForKey:@"shopAddress"];
     
     NSString *imageUrlStr = [tmpDic objectForKey:@"image"];
+    imageUrlStr = [imageUrlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     UIImage *image = [UIImage imageWithData:[XLTools readFileToCache:[XLTools md5:imageUrlStr]]];
     if (image) {
         cell.logoView.image = image;

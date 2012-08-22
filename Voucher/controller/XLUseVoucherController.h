@@ -16,6 +16,7 @@
 @property (nonatomic,retain) NSDictionary *voucher;
 @property (nonatomic,retain) IBOutlet UIImageView *imageView;
 @property (nonatomic,retain) IBOutlet UITextView *descView;
+@property (nonatomic,retain) IBOutlet UIActivityIndicatorView *indicator;
 
 - (IBAction)doUseVoucher:(id)sender;
 
