@@ -120,7 +120,7 @@
             case 0:
             {
                 cell.imageView.image = [UIImage imageNamed:@"more_fabu.png"];
-                cell.textLabel.text = @"我要发布";
+                cell.textLabel.text = @"我是商家";
                 break;
             }
             case 1:
