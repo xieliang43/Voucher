@@ -54,13 +54,17 @@
 							<object class="IBUIImageView" id="678598128">
 								<reference key="NSNextResponder" ref="813175186"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{5, 5}, {99, 64}}</string>
+								<string key="NSFrame">{{5, 5}, {100, 64}}</string>
 								<reference key="NSSuperview" ref="813175186"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="545324766"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">default_merchant.png</string>
+								</object>
 							</object>
 							<object class="IBUILabel" id="545324766">
 								<reference key="NSNextResponder" ref="813175186"/>
@@ -160,6 +164,7 @@
 								<string key="NSFrame">{{112, 53}, {208, 21}}</string>
 								<reference key="NSSuperview" ref="813175186"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -379,6 +384,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="default_merchant.png">{100, 64}</string>
 			<string key="getVoucher@2x.png">{152, 46}</string>
 			<string key="location@2x.png">{18, 26}</string>
 		</dictionary>

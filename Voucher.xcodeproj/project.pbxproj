@@ -35,6 +35,8 @@
 		CD687FF315BD88A9009E497C /* XLMerchantDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD687FF115BD88A9009E497C /* XLMerchantDetailController.m */; };
 		CD687FF415BD88A9009E497C /* XLMerchantDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD687FF215BD88A9009E497C /* XLMerchantDetailController.xib */; };
 		CD6EE79015BAE49D003561E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */; };
+		CD77CE6115F246B0007D4793 /* default_merchant.png in Resources */ = {isa = PBXBuildFile; fileRef = CD77CE5F15F246B0007D4793 /* default_merchant.png */; };
+		CD77CE6215F246B0007D4793 /* default_merchant@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD77CE6015F246B0007D4793 /* default_merchant@2x.png */; };
 		CD83789B15B2D86B0072A0FE /* XLMerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD83789A15B2D86B0072A0FE /* XLMerchantCell.xib */; };
 		CD83789E15B2D9450072A0FE /* test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD83789D15B2D9450072A0FE /* test@2x.png */; };
 		CD8378A015B2D9B10072A0FE /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD83789F15B2D9B10072A0FE /* location@2x.png */; };
@@ -187,6 +189,8 @@
 		CD687FF115BD88A9009E497C /* XLMerchantDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMerchantDetailController.m; sourceTree = "<group>"; };
 		CD687FF215BD88A9009E497C /* XLMerchantDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantDetailController.xib; sourceTree = "<group>"; };
 		CD6EE78F15BAE49D003561E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CD77CE5F15F246B0007D4793 /* default_merchant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_merchant.png; sourceTree = "<group>"; };
+		CD77CE6015F246B0007D4793 /* default_merchant@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_merchant@2x.png"; sourceTree = "<group>"; };
 		CD83789A15B2D86B0072A0FE /* XLMerchantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLMerchantCell.xib; sourceTree = "<group>"; };
 		CD83789D15B2D9450072A0FE /* test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test@2x.png"; sourceTree = "<group>"; };
 		CD83789F15B2D9B10072A0FE /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
@@ -459,6 +463,8 @@
 		CDA2B79A15AC6E9E00CC1815 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				CD77CE5F15F246B0007D4793 /* default_merchant.png */,
+				CD77CE6015F246B0007D4793 /* default_merchant@2x.png */,
 				E09DDF4F15D8DE6600E1E4E8 /* Default@2x.png */,
 				E09DDF5015D8DE6600E1E4E8 /* Default.png */,
 				CDF8098F15CAC5B70073AE5F /* info_mid@2x.png */,
@@ -842,6 +848,8 @@
 				E09DDF5115D8DE6600E1E4E8 /* Default@2x.png in Resources */,
 				E09DDF5215D8DE6600E1E4E8 /* Default.png in Resources */,
 				CD865CF915E3C1D70093D234 /* XLFindPasswordController.xib in Resources */,
+				CD77CE6115F246B0007D4793 /* default_merchant.png in Resources */,
+				CD77CE6215F246B0007D4793 /* default_merchant@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
