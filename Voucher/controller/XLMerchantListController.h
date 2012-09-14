@@ -37,6 +37,9 @@ XLOptionSelectorDelegate,WZRefreshTableHeaderDelegate,WZLoadMoreTableFooterDeleg
     NSInteger _total;
     
     NSString *_keyWord;
+    
+    UITextField *searchField;
+    UIButton *maskBtn;
 }
 
 @property (nonatomic,retain) IBOutlet UITableView *tableView;

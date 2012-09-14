@@ -36,10 +36,17 @@
     [_refreshHeaderView release];
     [_loadMoreFooterView release];
     
+    [searchField release];
     [_keyWord release];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"CITY_INFO_CHANGE" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidShowNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidHideNotification
+                                                  object:nil];
     [super dealloc];
 }
 
@@ -60,13 +67,12 @@
     [naviBar addSubview:searchIcon];
     [searchIcon release];
     
-    UITextField *searchField = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, 270, 44)];
+    searchField = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, 270, 44)];
     searchField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     searchField.font = [UIFont systemFontOfSize:16];
     searchField.returnKeyType = UIReturnKeySearch;
     [searchField addTarget:self action:@selector(willSearch:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [naviBar addSubview:searchField];
-    [searchField release];
     
 }
 
@@ -82,8 +88,37 @@
         [_queue setMaxConcurrentOperationCount:2];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cityInfoDidChange) name:@"CITY_INFO_CHANGE" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardDidShow)
+                                                     name:UIKeyboardDidShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardDidHide)
+                                                     name:UIKeyboardDidHideNotification
+                                                   object:nil];
     }
     return self;
+}
+
+- (void)keyboardDidShow
+{
+    maskBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    maskBtn.frame = CGRectMake(0, 44, 320, 416);
+    maskBtn.backgroundColor = [UIColor blackColor];
+    maskBtn.alpha = 0.2;
+    [maskBtn addTarget:self action:@selector(hideKeyboard) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:maskBtn];
+}
+
+- (void)keyboardDidHide
+{
+    [maskBtn removeFromSuperview];
+}
+
+- (void)hideKeyboard
+{
+    [searchField resignFirstResponder];
 }
 
 - (void)cityInfoDidChange
@@ -209,6 +244,7 @@
 
 - (void)doSearch
 {
+    [searchField resignFirstResponder];
     NSString *urlStr = [XLTools getInterfaceByKey:@"get_shops"];
     Debug(@"%@",urlStr);
     NSURL *url = [NSURL URLWithString:urlStr];
